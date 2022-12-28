@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.core.validators import MinValueValidator
+from django.contrib import admin
 
 
 class Department(models.Model):
@@ -10,12 +11,19 @@ class Department(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'بخش'
+
 
 class ServiceType(models.Model):
     name = models.CharField(("نوع خدمت"), max_length=150)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'نوع خدمت'
+        ordering = ['id']
 
 
 class Service(models.Model):
@@ -26,12 +34,19 @@ class Service(models.Model):
     duration = models.DurationField(("مدت زمان"), default=None)
     active = models.BooleanField(("فعال"))
 
+    class Meta:
+        verbose_name_plural = 'خدمات'
+        ordering = ['id']
+
 
 class Insurance(models.Model):
     name = models.CharField(("نام بیمه"), max_length=150)
     
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'بیمه'
 
 
 class Patient(models.Model):
@@ -79,6 +94,10 @@ class Patient(models.Model):
     def __str__(self):
         return self.identity
 
+    class Meta:
+        verbose_name_plural = 'بیماران'
+        ordering = ['first_name', 'last_name']
+
 
 class Doctor(models.Model):
     GENDER_MAN = 'man'
@@ -99,7 +118,22 @@ class Doctor(models.Model):
     Contract = models.DecimalField(("درصد قرارداد"), max_digits=10, decimal_places=2, validators=[MinValueValidator(1)])
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    @admin.display(ordering='user__first_name')
+    def first_name(self):
+        return self.user.first_name
+
+    @admin.display(ordering='user__last_name')
+    def last_name(self):
+        return self.user.last_name
+
+    def email(self):
+        return self.user.email
+
     def __str__(self):
-        return self.last_name
+        return f'{self.user.first_name} {self.user.last_name}'
+
+    class Meta:
+        verbose_name_plural = 'پزشکان'
+        ordering = ['user__first_name', 'user__last_name']
 
 
