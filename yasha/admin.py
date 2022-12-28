@@ -32,7 +32,7 @@ class DoctorAdmin(admin.ModelAdmin):
 
 @admin.register(models.Department)
 class DepartmentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name']
+    list_display = ['name']
 
 @admin.register(models.Insurance)
 class InsuranceAdmin(admin.ModelAdmin):
@@ -40,7 +40,7 @@ class InsuranceAdmin(admin.ModelAdmin):
 
 @admin.register(models.ServiceType)
 class ServiceTypeAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name']
+    list_display = ['name']
 
 @admin.register(models.Service)
 class ServiceAdmin(admin.ModelAdmin):
