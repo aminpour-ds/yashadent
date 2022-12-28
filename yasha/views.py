@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from .serializers import DoctorSerializer
+from .models import Doctor
 
-# Create your views here.
+
+class DoctorViewSet(ModelViewSet):
+    queryset = Doctor.objects.all()
+    serializer_class = DoctorSerializer
+    
