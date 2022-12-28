@@ -116,7 +116,7 @@ class Doctor(models.Model):
     mobile = models.CharField(("موبایل"), max_length=255)
     gender = models.CharField(("جنسیت"), max_length=20, choices=GENDER_CHOICES, default=GENDER_WOMAN)
     Contract = models.DecimalField(("درصد قرارداد"), max_digits=10, decimal_places=2, validators=[MinValueValidator(1)])
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=("کاربر"))
 
     @admin.display(ordering='user__first_name')
     def first_name(self):
