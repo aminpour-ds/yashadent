@@ -1,11 +1,10 @@
-from datetime import datetime
-from django.contrib import admin, messages
-from django.db.models import Count
-from django.utils.html import format_html, urlencode
+from django.contrib import admin
+from django.utils.html import format_html
 from django.urls import reverse
 from . import models
 from django.utils.html import format_html
 from django.urls import reverse
+
 
 @admin.register(models.Patient)
 class PatientAdmin(admin.ModelAdmin):
@@ -47,3 +46,7 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'cost', 'duration', 'active', 'department_id']
     list_editable = ['active']
     list_per_page = 10
+
+@admin.register(models.Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'date']
