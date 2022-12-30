@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils import timezone
 from django.core.validators import MinValueValidator
 from django.contrib import admin
+from .validators import validate_file_size
 
 
 class Department(models.Model):
@@ -135,6 +136,11 @@ class Doctor(models.Model):
     class Meta:
         verbose_name_plural = 'پزشکان'
         ordering = ['user__first_name', 'user__last_name']
+
+
+class DoctorImage(models.Model):
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='yasha/images/doctor', validators=[validate_file_size])        
 
 
 class Review(models.Model):
