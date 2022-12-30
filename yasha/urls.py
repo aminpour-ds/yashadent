@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework_nested import routers
-from . import views
+from . import views, viewshtml
 
 
 router = routers.DefaultRouter()
@@ -11,4 +11,14 @@ router.register('review', views.ReviewViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
+]
+
+# =======================================================================================================
+
+html_router = routers.DefaultRouter()
+html_router.register('doctors', viewshtml.Doctors)
+html_router.register('', viewshtml.Index)
+
+urlpatterns += [
+    path('', include(html_router.urls)),    
 ]
