@@ -19,6 +19,19 @@ class PatientAdmin(admin.ModelAdmin):
    
     fileNumber.short_description = 'شماره پرونده'
 
+
+class DoctorImageInline(admin.TabularInline):
+    model = models.DoctorImage
+    readonly_fields = ['thumbnail']
+    min_num = 1
+    extra = 0
+    
+    def thumbnail(self, instance):
+        if instance.image.name != '':
+            return format_html(f'<img src="{instance.image.url}" class="thumbnail-admin" />')
+        return ''    
+
+
 @admin.register(models.Doctor)
 class DoctorAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'mobile', 'email', 'Contract']
@@ -28,24 +41,35 @@ class DoctorAdmin(admin.ModelAdmin):
     list_select_related = ['user']
     ordering = ['user__first_name', 'user__last_name']
     search_fields = ['user__first_name__istartswith', 'user__last_name__istartswith']
+    inlines = [DoctorImageInline]
+
+    class Media:
+        css = {
+            'all': ['adminstyle/style.css']
+    }
+
 
 @admin.register(models.Department)
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ['name']
 
+
 @admin.register(models.Insurance)
 class InsuranceAdmin(admin.ModelAdmin):
     list_display = ['id', 'name']
 
+
 @admin.register(models.ServiceType)
 class ServiceTypeAdmin(admin.ModelAdmin):
     list_display = ['name']
+
 
 @admin.register(models.Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'cost', 'duration', 'active', 'department_id']
     list_editable = ['active']
     list_per_page = 10
+
 
 @admin.register(models.Review)
 class ReviewAdmin(admin.ModelAdmin):
