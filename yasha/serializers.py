@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Doctor, Service, Insurance, Review
+from .models import Doctor, Service, Insurance, Review, About
 
 
 
@@ -29,3 +29,10 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ['name', 'description', 'date']
+
+
+class AboutSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = About
+        fields = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2']

@@ -11,3 +11,8 @@ class Doctors(views.DoctorViewSet):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'doctors.html'
 
+
+class About(views.AboutViewSet):    
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'About.html'
+
