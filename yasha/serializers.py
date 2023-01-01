@@ -1,13 +1,24 @@
 from rest_framework import serializers
-from .models import Doctor, Service, Insurance, Review, About
+from .models import Doctor, Service, Insurance, Review, About, DoctorImage
 
+
+
+class DoctorImageSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        doctor_id = self.context['doctor_id']
+        return DoctorImage.objects.create(doctor_id=doctor_id, **validated_data)
+
+    class Meta:
+        model = DoctorImage
+        fields = ['id', 'image']
 
 
 class DoctorSerializer(serializers.ModelSerializer):
+    images = DoctorImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Doctor
-        fields = ['professionalStatement', 'mobile', 'first_name', 'last_name', 'email']
+        fields = ['professionalStatement', 'mobile', 'first_name', 'last_name', 'email', 'images']
 
 
 class ServiceSerializer(serializers.ModelSerializer):
