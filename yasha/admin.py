@@ -74,3 +74,8 @@ class ServiceAdmin(admin.ModelAdmin):
 @admin.register(models.Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ['name', 'description', 'date']
+
+
+@admin.register(models.About)
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'address']

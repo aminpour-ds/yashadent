@@ -167,3 +167,6 @@ class About(models.Model):
 
     def __str__(self):
         return 'درباره ما'
+
+    class Meta:
+        verbose_name_plural = 'درباره ما'
