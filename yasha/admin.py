@@ -59,9 +59,27 @@ class InsuranceAdmin(admin.ModelAdmin):
     list_display = ['id', 'name']
 
 
+class ServiceTypeImageInline(admin.TabularInline):
+    model = models.ServiceTypeImage
+    readonly_fields = ['thumbnail']
+    min_num = 1
+    extra = 0
+    
+    def thumbnail(self, instance):
+        if instance.image.name != '':
+            return format_html(f'<img src="{instance.image.url}" class="thumbnail-admin" />')
+        return ''    
+
+
 @admin.register(models.ServiceType)
 class ServiceTypeAdmin(admin.ModelAdmin):
     list_display = ['name']
+    inlines = [ServiceTypeImageInline]
+
+    class Media:
+        css = {
+            'all': ['adminstyle/style.css']
+    }
 
 
 @admin.register(models.Service)
