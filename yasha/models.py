@@ -27,6 +27,11 @@ class ServiceType(models.Model):
         ordering = ['id']
 
 
+class ServiceTypeImage(models.Model):
+    ServiceType = models.ForeignKey(ServiceType, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='yasha/images/servicetype', validators=[validate_file_size])        
+
+
 class Service(models.Model):
     ServiceTypeID = models.ForeignKey(ServiceType, on_delete=models.PROTECT, related_name='service', verbose_name=("نوع خدمت"))
     name = models.CharField(("نام خدمت"), max_length=150)
