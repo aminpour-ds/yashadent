@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from .serializers import DoctorSerializer, ServiceSerializer, InsuranceSerializer, ReviewSerializer, AboutSerializer
-from .models import Doctor, Service, Insurance, Review, About
+from .serializers import DoctorSerializer, ServiceSerializer, InsuranceSerializer, ReviewSerializer, AboutSerializer, ServiceTypeSerializer
+from .models import Doctor, Service, Insurance, Review, About, ServiceType
 from .permissions import IsAdminOrReadOnly
 from .pagination import DefaultPagination
 
@@ -15,6 +15,13 @@ class DoctorViewSet(ModelViewSet):
 class ServiceViewSet(ModelViewSet):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
+    permission_classes = [IsAdminOrReadOnly]
+    pagination_class = DefaultPagination
+
+
+class ServiceTypeViewSet(ModelViewSet):
+    queryset = ServiceType.objects.all()
+    serializer_class = ServiceTypeSerializer
     permission_classes = [IsAdminOrReadOnly]
     pagination_class = DefaultPagination
 

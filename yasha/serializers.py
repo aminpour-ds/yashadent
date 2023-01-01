@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Doctor, Service, Insurance, Review, About, DoctorImage
+from .models import Doctor, Service, Insurance, Review, About, DoctorImage, ServiceType, ServiceTypeImage
 
 
 
@@ -19,6 +19,20 @@ class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Doctor
         fields = ['professionalStatement', 'mobile', 'first_name', 'last_name', 'email', 'images']
+
+
+class ServiceTypeImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceTypeImage
+        fields = ['id', 'image']
+
+
+class ServiceTypeSerializer(serializers.ModelSerializer):
+    images = ServiceTypeImageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = ServiceType
+        fields = ['id', 'name', 'images']
 
 
 class ServiceSerializer(serializers.ModelSerializer):
