@@ -35,4 +35,4 @@ class AboutSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = About
-        fields = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2']
+        fields = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'address']

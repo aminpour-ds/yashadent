@@ -156,13 +156,14 @@ class Review(models.Model):
 
 
 class About(models.Model):
-    description = models.TextField()
+    description = models.TextField(("توضیحات"))
     phone1 = models.CharField(("خط تلفن 1"), max_length=255)
     phone2 = models.CharField(("خط تلفن 2"), max_length=255, null=True)
     email = models.EmailField(("ایمیل"), blank=True, unique=True)
     linkedin = models.CharField(("لینکدین"), max_length=255)
     instagram = models.CharField(("اینستاگرام"), max_length=255)
     whatsapp = models.CharField(("واتس اپ"), max_length=255)
+    address = models.TextField(("آدرس"))
 
     def __str__(self):
         return 'درباره ما'
