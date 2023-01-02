@@ -603,6 +603,12 @@ pre code {
   }
 }
 
+@media (min-width: 1200px) {
+  .topbar .container, .navbar .container {
+    max-width: 1500px;
+  }
+}
+
 .row {
   display: -ms-flexbox;
   display: flex;
