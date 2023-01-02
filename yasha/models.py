@@ -186,3 +186,6 @@ class AppointmentRequest(models.Model):
 
     def __str__(self):
         return 'درخواست وقت ویزیت بیمار'
+
+    class Meta:
+        verbose_name_plural = 'درخواست وقت ویزیت بیمار'
