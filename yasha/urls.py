@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework_nested import routers
+from django.views.generic import TemplateView
 from . import views, viewshtml
 
 
@@ -25,4 +26,5 @@ html_router.register('', viewshtml.Index)
 
 urlpatterns += [
     path('', include(html_router.urls)),    
+    path('appointment', TemplateView.as_view(template_name='appointment.html')),
 ]
