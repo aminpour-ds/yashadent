@@ -175,3 +175,14 @@ class About(models.Model):
 
     class Meta:
         verbose_name_plural = 'درباره ما'
+
+
+class AppointmentRequest(models.Model):
+    name = models.CharField(("نام"), max_length=255)
+    your_problem = models.CharField(("مشکل بیمار"), max_length=255)
+    phone = models.CharField(("تلفن"), max_length=255)
+    description = models.TextField(("توضیحات"))
+    date = models.DateField(("تاریخ ثبت درخواست"), auto_now_add=True)
+
+    def __str__(self):
+        return 'درخواست وقت ویزیت بیمار'
