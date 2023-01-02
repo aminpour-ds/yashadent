@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Doctor, Service, Insurance, Review, About, DoctorImage, ServiceType, ServiceTypeImage
+from .models import Doctor, Service, Insurance, Review, About, DoctorImage, ServiceType, ServiceTypeImage, AppointmentRequest
 
 
 
@@ -61,3 +61,10 @@ class AboutSerializer(serializers.ModelSerializer):
     class Meta:
         model = About
         fields = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'address']
+
+        
+class AppointmentRequestSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AppointmentRequest
+        fields = ['name', 'your_problem', 'phone', 'description', 'date']

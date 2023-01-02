@@ -10,6 +10,7 @@ router.register('servicetype', views.ServiceTypeViewSet)
 router.register('insurance', views.InsuranceViewSet)
 router.register('review', views.ReviewViewSet)
 router.register('about', views.AboutViewSet, basename='about')
+router.register('AppointmentRequest', views.AppointmentRequestViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
