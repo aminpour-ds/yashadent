@@ -16,3 +16,8 @@ class About(views.AboutViewSet):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'About.html'
 
+
+class servicetype(views.ServiceTypeViewSet):    
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'servicetype.html'
+

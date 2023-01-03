@@ -22,6 +22,7 @@ urlpatterns = [
 html_router = routers.DefaultRouter()
 html_router.register('doctors', viewshtml.Doctors)
 html_router.register('about', viewshtml.About, basename='about')
+html_router.register('servicetype', viewshtml.servicetype)
 html_router.register('', viewshtml.Index)
 
 urlpatterns += [
