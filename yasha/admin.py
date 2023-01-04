@@ -84,7 +84,7 @@ class ServiceTypeAdmin(admin.ModelAdmin):
 
 @admin.register(models.Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'cost', 'duration', 'active', 'department_id']
+    list_display = ['id', 'name', 'cost', 'duration', 'active', 'department']
     list_editable = ['active']
     list_per_page = 10
 
