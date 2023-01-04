@@ -168,7 +168,10 @@ class About(models.Model):
     linkedin = models.CharField(("لینکدین"), max_length=255)
     instagram = models.CharField(("اینستاگرام"), max_length=255)
     whatsapp = models.CharField(("واتس اپ"), max_length=255)
-    address = models.TextField(("آدرس"))
+    country = models.CharField(("کشور"), max_length=255)
+    city = models.CharField(("شهر"), max_length=255)
+    street = models.CharField(("خیابان"), max_length=255)
+    flat = models.CharField(("پلاک"), max_length=255)
 
     def __str__(self):
         return 'درباره ما'

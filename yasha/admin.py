@@ -96,7 +96,7 @@ class ReviewAdmin(admin.ModelAdmin):
 
 @admin.register(models.About)
 class AboutAdmin(admin.ModelAdmin):
-    list_display = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'address']
+    list_display = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'country', 'city', 'street', 'flat']
 
 
 @admin.register(models.AppointmentRequest)
