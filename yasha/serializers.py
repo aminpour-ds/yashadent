@@ -60,7 +60,7 @@ class AboutSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = About
-        fields = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'address']
+        fields = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'country', 'city', 'street', 'flat']
 
         
 class AppointmentRequestSerializer(serializers.ModelSerializer):
