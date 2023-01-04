@@ -13,11 +13,16 @@ class DoctorViewSet(ModelViewSet):
     pagination_class = DefaultPagination
 
 
-class ServiceViewSet(ModelViewSet):
-    queryset = Service.objects.all()
+class ServiceViewSet(ModelViewSet):    
     serializer_class = ServiceSerializer
     permission_classes = [IsAdminOrReadOnly]
     pagination_class = DefaultPagination
+
+    def get_queryset(self):
+        return Service.objects.filter(servicetype_id=self.kwargs['pk'])
+
+    def get_serializer_context(self):
+        return {'servicetype_id': self.kwargs['pk']}
 
 
 class ServiceTypeViewSet(ModelViewSet):

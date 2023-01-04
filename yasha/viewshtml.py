@@ -21,3 +21,8 @@ class servicetype(views.ServiceTypeViewSet):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'servicetype.html'
 
+
+class service(views.ServiceViewSet):    
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'service-details.html'
+
