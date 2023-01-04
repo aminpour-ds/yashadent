@@ -39,7 +39,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = ['ServiceTypeID', 'name', 'cost']
+        fields = ['servicetype', 'name', 'cost']
 
 
 class InsuranceSerializer(serializers.ModelSerializer):
