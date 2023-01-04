@@ -33,7 +33,7 @@ class ServiceTypeImage(models.Model):
 
 
 class Service(models.Model):
-    ServiceTypeID = models.ForeignKey(ServiceType, on_delete=models.PROTECT, related_name='service', verbose_name=("نوع خدمت"))
+    servicetype = models.ForeignKey(ServiceType, on_delete=models.PROTECT, related_name='service', verbose_name=("نوع خدمت"))
     name = models.CharField(("نام خدمت"), max_length=150)
     department = models.ForeignKey(Department, on_delete=models.PROTECT, related_name='service', verbose_name=("نام بخش"))
     cost = models.BigIntegerField(("( ریال ) هزینه"), validators=[MinValueValidator(1)])
