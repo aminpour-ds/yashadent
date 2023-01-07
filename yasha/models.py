@@ -18,6 +18,8 @@ class Department(models.Model):
 
 class ServiceType(models.Model):
     name = models.CharField(("نوع خدمت"), max_length=150)
+    description = models.CharField(("توضیحات"), max_length=255, null=True, blank=True)
+    last_update = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
