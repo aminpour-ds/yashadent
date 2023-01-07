@@ -73,7 +73,7 @@ class ServiceTypeImageInline(admin.TabularInline):
 
 @admin.register(models.ServiceType)
 class ServiceTypeAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'description', 'last_update']
     inlines = [ServiceTypeImageInline]
 
     class Media:

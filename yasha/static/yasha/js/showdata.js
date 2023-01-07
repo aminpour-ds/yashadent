@@ -4,12 +4,12 @@ const service_itm = document.getElementById("service-items");
 
 
 function serviceCard(item){
-    var img1 = item.images[0].image;
-    var img2 = item.images[0].image;
+    var img = item.images[0].image;    
     var name = item.name;
+    var id = item.id;
     
     return '<div class="col-lg-4 py-2 wow zoomIn"><div class="card-blog"><div class="header">' +
-           '<a href="service-details.html" class="post-thumb"><img src="' + img + '" alt=""></a></div><div class="body">' +
+           '<a href="' + id + '" class="post-thumb"><img src="' + img + '" alt=""></a></div><div class="body">' +
            '<h5 class="post-title"><a href="service-details.html">' + name + '</a></h5></div></div></div>';
 }
 
