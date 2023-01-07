@@ -10281,4 +10281,25 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
+.footer-link-info h5 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  position: relative;
+  font-weight: 500;
+  padding: 0 0 10px 0;
+}
+.footer-link-info h5::before {
+  border-bottom: 3px solid #00D9A5;
+  content: "";
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  bottom: 3px;
+  left: 0px;
+  
+}
+
 /*# sourceMappingURL=bootstrap.css.map */
