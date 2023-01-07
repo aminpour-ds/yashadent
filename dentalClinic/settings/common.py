@@ -127,6 +127,8 @@ AUTH_USER_MODEL = 'core.User'
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication', ),
+    'DATETIME_FORMAT': "%Y-%m-%d"
+    # 'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S", 
 }
 
 SIMPLE_JWT = {
