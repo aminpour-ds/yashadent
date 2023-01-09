@@ -30,3 +30,8 @@ def Servicetype(request, pk):
     srv_detail = queryset.get(pk=pk)
     service_detail = ServiceTypeSerializer(srv_detail)
     return render(request, 'servicetype.html', {'results' :  serializer.data, 'service_detail' : service_detail.data})
+
+
+class Questions(views.QuestionsViewSet):    
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'questions.html'

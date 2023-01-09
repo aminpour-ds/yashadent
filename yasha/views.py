@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from .serializers import DoctorSerializer, ServiceSerializer, InsuranceSerializer, ReviewSerializer, AboutSerializer, ServiceTypeSerializer, AppointmentRequestSerializer, QuestionSerializer
-from .models import Doctor, Service, Insurance, Review, About, ServiceType, AppointmentRequest
-from .permissions import IsAdminOrReadOnly
+from .models import Doctor, Service, Insurance, Review, About, ServiceType, AppointmentRequest, Questions
+from .permissions import IsAdminOrReadOnly, IsAdminOrPatient
 from .pagination import DefaultPagination
 
 
@@ -56,4 +56,10 @@ class AppointmentRequestViewSet(ModelViewSet):
     serializer_class = AppointmentRequestSerializer
 
 
+class QuestionsViewSet(ModelViewSet):         
+    queryset = Questions.objects.all()
+    serializer_class = QuestionSerializer
+    pagination_class = DefaultPagination
+    permission_classes = [IsAdminOrPatient]
+    
            

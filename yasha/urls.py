@@ -7,6 +7,7 @@ from . import views, viewshtml
 router = routers.DefaultRouter()
 router.register('doctors', views.DoctorViewSet)
 router.register('insurance', views.InsuranceViewSet)
+router.register('questions', views.QuestionsViewSet)
 router.register('review', views.ReviewViewSet)
 router.register('about', views.AboutViewSet, basename='about')
 router.register('AppointmentRequest', views.AppointmentRequestViewSet)
@@ -22,6 +23,7 @@ urlpatterns = [
 html_router = routers.DefaultRouter()
 html_router.register('doctors', viewshtml.Doctors)
 html_router.register('about', viewshtml.About, basename='about')
+html_router.register('questions', viewshtml.Questions)
 html_router.register('', viewshtml.Index)
 
 urlpatterns += [
