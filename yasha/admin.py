@@ -102,3 +102,8 @@ class AboutAdmin(admin.ModelAdmin):
 @admin.register(models.AppointmentRequest)
 class AppointmentRequestAdmin(admin.ModelAdmin):
     list_display = ['name', 'your_problem', 'phone', 'description', 'date']
+
+
+@admin.register(models.Questions)
+class QuestionsAdmin(admin.ModelAdmin):
+    list_display = ['question', 'description', 'date']
