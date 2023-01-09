@@ -604,8 +604,14 @@ pre code {
 }
 
 @media (min-width: 1200px) {
+  .page-footer .container {
+    max-width: 1300px;
+  }
+}
+
+@media (min-width: 1200px) {
   .topbar .container, .navbar .container {
-    max-width: 1500px;
+    max-width: 1700px;
   }
 }
 
