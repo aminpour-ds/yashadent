@@ -25,7 +25,7 @@ html_router.register('about', viewshtml.About, basename='about')
 html_router.register('', viewshtml.Index)
 
 urlpatterns += [
-    path('service/<int:pk>/', viewshtml.servicetype.as_view({'get': 'list'})),
+    path('service/<int:pk>/', viewshtml.Servicetype),
     path('appointment/', TemplateView.as_view(template_name='appointment.html')),
     path('contact/', TemplateView.as_view(template_name='contact.html')),
     path('', include(html_router.urls)),    

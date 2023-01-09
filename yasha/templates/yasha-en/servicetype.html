@@ -50,22 +50,20 @@
         <div class="col-lg-8">
           <article class="blog-details">
             <div class="post-thumb">
-              <img src={{results.0.images.0.image}} alt="">             
+              <img src={{service_detail.images.0.image}} alt="">             
             </div>
             <div class="post-meta">
               <div class="post-author">
-                <span class="text-grey">By</span> <a href="#">Admin</a>  
+                <span class="text-grey">By Admin</span>  
               </div>
               <span class="divider">|</span>
               <div class="post-date">
-                <a href="#">{{results.0.last_update}}</a>
-              
-              </div>
-              
+                <a>{{service_detail.last_update}}</a>              
+              </div>              
             </div>
-            <h2 class="post-title h1">{{results.0.name}}</h2>
-            <div class="post-content">
-              <p>{{results.0.description}}</p>                           
+            <h2 class="post-title h1">{{service_detail.name}}</h2>
+            <div class="post-content">                                
+              <p>{{service_detail.description}}</p>                           
             </div>                        
 
           </article> <!-- .blog-details -->
@@ -84,8 +82,8 @@
                 <div class="content">
                   <h5 class="post-title"><a href="/service/{{srv.id}}">{{srv.name}}</a></h5>
                   <div class="meta">
-                    <a href="#"><span class="mai-calendar"></span> {{srv.last_update}}</a>
-                    <a href="#"><span class="mai-person"></span> Admin</a>                   
+                    <a><span class="mai-calendar"></span> {{srv.last_update}}</a>
+                    <a><span class="mai-person"></span> Admin</a>                   
                   </div>
                 </div>
               </div>
