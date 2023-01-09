@@ -106,14 +106,14 @@ function clinic_info(outcome){
                     <a class="nav-link" href="/service/1">OUR SERVICES</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="doctors">DOCTORS</a>
+                    <a class="nav-link" href="/doctors">DOCTORS</a>
                     </li>
                     
                     <li class="nav-item">
-                    <a class="nav-link" href="insurance">INSURANCE INFO</a>
+                    <a class="nav-link" href="/insurance">INSURANCE INFO</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="questions">YOUR QUESTIONS</a>
+                    <a class="nav-link" href="/questions">YOUR QUESTIONS</a>
                     </li>
                     <li class="nav-item">
                     <a class="btn btn-primary ml-lg-3" href="appointment">BOOK NOW</a>
