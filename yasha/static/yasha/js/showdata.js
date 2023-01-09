@@ -9,8 +9,8 @@ function serviceCard(item){
     var id = item.id;
     
     return '<div class="col-lg-4 py-2 wow zoomIn"><div class="card-blog"><div class="header">' +
-           '<a href="' + id + '" class="post-thumb"><img src="' + img + '" alt=""></a></div><div class="body">' +
-           '<h5 class="post-title"><a href="service-details.html">' + name + '</a></h5></div></div></div>';
+           '<a href="/service/' + id + '" class="post-thumb"><img src="' + img + '" alt=""></a></div><div class="body">' +
+           '<h5 class="post-title"><a href="/service/' + id + '">' + name + '</a></h5></div></div></div>';
 }
 
 function service_list(outcome){
@@ -103,7 +103,7 @@ function clinic_info(outcome){
                     <a class="nav-link" href="/">HOME</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="service">OUR SERVICES</a>
+                    <a class="nav-link" href="/service/1">OUR SERVICES</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="doctors">DOCTORS</a>
