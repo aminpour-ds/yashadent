@@ -194,3 +194,16 @@ class AppointmentRequest(models.Model):
 
     class Meta:
         verbose_name_plural = 'درخواست وقت ویزیت بیمار'
+
+
+class Questions(models.Model):    
+    question = models.TextField()
+    description = models.TextField()
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return 'سوالات'
+
+    class Meta:
+        verbose_name_plural = 'سوالات'
+                
