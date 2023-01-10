@@ -31,7 +31,13 @@ class ServiceType(models.Model):
 
 class ServiceTypeImage(models.Model):
     ServiceType = models.ForeignKey(ServiceType, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='yasha/images/servicetype', validators=[validate_file_size])        
+    image = models.ImageField(upload_to='yasha/images/servicetype', validators=[validate_file_size])   
+
+    def __str__(self):
+        return 'تصاویر سرویس'
+    
+    class Meta:
+        verbose_name_plural = 'تصاویر سرویس'     
 
 
 class Service(models.Model):
@@ -148,6 +154,12 @@ class Doctor(models.Model):
 class DoctorImage(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='yasha/images/doctor', validators=[validate_file_size])        
+
+    def __str__(self):
+        return 'تصاویر پزشک'
+    
+    class Meta:
+        verbose_name_plural = 'تصاویر پزشک'
 
 
 class Review(models.Model):
