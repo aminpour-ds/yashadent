@@ -1,9 +1,9 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, FileExtensionValidator
 from django.contrib import admin
-from .validators import validate_file_size
+from .validators import validate_file_size, validate_video_size
 
 
 class Department(models.Model):
@@ -181,6 +181,30 @@ class About(models.Model):
     class Meta:
         verbose_name_plural = 'درباره ما'
 
+
+class ClinicImage(models.Model):
+    about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='images', verbose_name="درباره")
+    name = models.CharField(max_length=255)
+    image = models.ImageField(("عکس"), upload_to='yasha/images/clinic', validators=[validate_file_size])        
+    
+    def __str__(self):
+        return 'تصاویر کلینیک'
+    
+    class Meta:
+        verbose_name_plural = 'تصاویر کلینیک'
+
+
+class ClinicVideo(models.Model):
+    about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='video', verbose_name="درباره")
+    name = models.CharField(max_length=255)
+    video = models.FileField(("فیلم"), upload_to='yasha/images/clinic',null=True,
+            validators=[validate_video_size, FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])        
+
+    def __str__(self):
+        return 'ویدئوهای کلینیک'
+    
+    class Meta:
+        verbose_name_plural = 'ویدئوهای کلینیک'
 
 class AppointmentRequest(models.Model):
     name = models.CharField(("نام"), max_length=255)
