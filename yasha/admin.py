@@ -94,10 +94,41 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ['name', 'description', 'date']
 
 
+class ClinicImageInline(admin.TabularInline):    
+    list_display = ['name', 'image']
+    readonly_fields = ['thumbnail']    
+    model = models.ClinicImage
+    min_num = 1
+    extra = 0
+    
+    def thumbnail(self, instance):
+        if instance.image.name != '':
+            return format_html(f'<img src="{instance.image.url}" class="thumbnail-admin" />')
+        return ''
+
+
+class ClinicVideoInline(admin.TabularInline):    
+    list_display = ['name', 'video']
+    readonly_fields = ['thumbnail']    
+    model = models.ClinicVideo
+    min_num = 1
+    extra = 0
+    
+    def thumbnail(self, instance):
+        if instance.video.name != '':
+            return format_html(f'<video src="{instance.video.url}" class="thumbnail-admin" />')
+        return ''
+
+
 @admin.register(models.About)
-class AboutAdmin(admin.ModelAdmin):
+class AboutAdmin(admin.ModelAdmin):  
+    inlines = [ClinicImageInline, ClinicVideoInline]  
     list_display = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'country', 'city', 'street', 'flat']
 
+    class Media:
+        css = {
+            'all': ['adminstyle/style.css']
+    }
 
 @admin.register(models.AppointmentRequest)
 class AppointmentRequestAdmin(admin.ModelAdmin):
