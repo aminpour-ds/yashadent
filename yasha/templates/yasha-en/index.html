@@ -29,7 +29,11 @@
   <header id="site-header">
   </header>
 
-  <div class="page-hero bg-image overlay-dark" style="background-image: url(/yasha/img/bg_image_1.jpg);">
+  <div class="page-hero bg-image overlay-dark panel-video" style="background-image: url(static/yasha/img/welcome.jpg); height:720px">
+    <video title="Dentistry office" class="" playsinline="" preload="auto" loop="" muted="" autoplay="">               
+      <source type="video/mp4" src="{% static '/yasha/img/welcome.mp4' %}">
+      Your browser does not support the video tag.
+    </video>
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
         <span class="subhead">Let's make your life happier</span>
@@ -38,7 +42,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="bg-light">
     <div class="page-section py-3 mt-md-n5 custom-index">
