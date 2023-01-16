@@ -44,7 +44,7 @@ class ReviewViewSet(ModelViewSet):
     
 
 class AboutViewSet(ModelViewSet):            
-    queryset = About.objects.all()
+    queryset = About.objects.prefetch_related('videos').all()
     serializer_class = AboutSerializer
     permission_classes = [IsAdminOrReadOnly]
     pagination_class = DefaultPagination
