@@ -207,7 +207,7 @@ class ClinicImage(models.Model):
 
 
 class ClinicVideo(models.Model):
-    about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='video', verbose_name="درباره")
+    about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='videos', verbose_name="درباره")
     name = models.CharField(max_length=255)
     video = models.FileField(("فیلم"), upload_to='yasha/images/clinic',null=True,
             validators=[validate_video_size, FileExtensionValidator(allowed_extensions=['mov','avi','mp4','webm','mkv'])])        
