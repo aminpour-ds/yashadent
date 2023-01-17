@@ -138,3 +138,4 @@ class AppointmentRequestAdmin(admin.ModelAdmin):
 @admin.register(models.Questions)
 class QuestionsAdmin(admin.ModelAdmin):
     list_display = ['question', 'description', 'date']
+    list_per_page = 10
