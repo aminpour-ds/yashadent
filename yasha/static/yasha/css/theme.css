@@ -1641,6 +1641,11 @@ a.text-dark:hover, a.text-dark:focus {
   overflow: hidden;
 }
 
+.blog-item .post-thumb-fa {
+  margin-right: 0px;
+  margin-left: 15px;
+}
+
 .blog-item .post-thumb img {
   width: auto;
   height: 100%;
@@ -1660,6 +1665,10 @@ a.text-dark:hover, a.text-dark:focus {
   margin-right: 6px;
   font-size: 12px;
   color: #6E807A;
+}
+
+.blog-item .post-info-fa .meta a {
+  margin-right: 0px;
 }
 
 .blog-item .meta a:hover {
