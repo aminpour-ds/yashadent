@@ -226,10 +226,10 @@ class AppointmentRequest(models.Model):
     date = models.DateField(("تاریخ ثبت درخواست"), auto_now_add=True)
 
     def __str__(self):
-        return 'درخواست وقت ویزیت بیمار'
+        return 'درخواست وقت'
 
     class Meta:
-        verbose_name_plural = 'درخواست وقت ویزیت بیمار'
+        verbose_name_plural = 'درخواست وقت'
 
 
 class Questions(models.Model):    

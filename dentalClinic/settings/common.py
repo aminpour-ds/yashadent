@@ -57,7 +57,7 @@ ROOT_URLCONF = 'dentalClinic.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'yasha/templates/yasha-en',],
+        'DIRS': [BASE_DIR / 'yasha/templates/yasha-fa',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

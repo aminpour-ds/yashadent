@@ -1734,6 +1734,12 @@ a.text-dark:hover, a.text-dark:focus {
   border-color: #4F5E5B;
 }
 
+.footer-menu-fa {
+  position: relative;
+  list-style: none;
+  padding-right: 0;
+}
+
 .footer-menu {
   position: relative;
   list-style: none;

@@ -27,9 +27,9 @@ function clinic_info(outcome){
                 </div>
                 <div class="col-sm-1 text-center text-sm">
                     <div class="language-info">
-                    <a href="/" id="language2">فارسی</a>
-                    <span class="divider">|</span>
-                    <a href="/en" id="language1">انگلیسی</a>
+                        <a href="/en" id="language1">EN</a>
+                        <span class="divider">|</span>
+                        <a href="/" id="language2">FA</a>
                     </div>
                 </div>
             </div> 
@@ -42,12 +42,12 @@ function clinic_info(outcome){
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/">                    
+                <a class="navbar-brand" href="/en">                    
                     <img src=${clinic_logo} class="logo" alt="" />
                 </a>
             </div>
             
-            <a class="navbar-brand" href="/"><span class="text-primary">یاشا</span>-دنت</a>
+            <a class="navbar-brand" href="/en"><span class="text-primary">Yasha</span>-Dent</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -56,23 +56,23 @@ function clinic_info(outcome){
             <div class="collapse navbar-collapse" id="navbarSupport">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                    <a class="nav-link" href="/">صفحه اصلی</a>
+                    <a class="nav-link" href="/en">HOME</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/service/1">خدمات</a>
+                    <a class="nav-link" href="/en/service/1">SERVICES</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/doctors">پزشکان</a>
+                    <a class="nav-link" href="/en/doctors">DOCTORS</a>
                     </li>
                     
                     <li class="nav-item">
-                    <a class="nav-link" href="/partners">بیمه ها و شرکا</a>
+                    <a class="nav-link" href="/en/partners">INSURANCE AND PARTNERS</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/questions">سوالات شما</a>
+                    <a class="nav-link" href="/en/questions">YOUR QUESTIONS</a>
                     </li>
                     <li class="nav-item">
-                    <a class="btn btn-primary ml-lg-3" href="/appointment">تعیین وقت</a>
+                    <a class="btn btn-primary ml-lg-3" href="/en/appointment">BOOK NOW</a>
                     </li>
                 </ul>
             </div> 
@@ -83,32 +83,32 @@ function clinic_info(outcome){
     $('#site-footer').html(`
     <div class="container">
       <div class="row px-md-3">
-        <div class="col-sm-6 col-lg-4 py-3" style="direction: rtl; text-align: right;">
+        <div class="col-sm-6 col-lg-4 py-3">
           <div class="footer-link-info">
-            <h5>درباره یاشادنت</h5>
-            <ul class="footer-menu footer-menu-fa">
-              <li><a href="/about">درباره ما</a></li>              
-              <li><a href="/partners">بیمه ها و شرکا</a></li>     
-              <li><a href="/appointment">خدمات رایگان</a></li>                                                                             
+            <h5>About The Yasha-Dent</h5>
+            <ul class="footer-menu">
+              <li><a href="/en/about">About Us</a></li>                                                                 
+              <li><a href="/en/partners">Insurances And Partners</a></li>                                                                   
+              <li><a href="/en/appointment">Free Customer Services</a></li>                                                                   
             </ul>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-4 py-3" style="direction: rtl; text-align: right;">
+        <div class="col-sm-6 col-lg-4 py-3">
           <div class="footer-link-info">
-            <h5>بیشتر</h5>
-            <ul class="footer-menu footer-menu-fa">                        
-              <li><a href="/questions">پرسش و پاسخ</a></li>                   
-              <li><a href="/">تبلیغات</a></li>
-              <li><a href="/appointment">درخواست همکاری با ما</a></li>
+            <h5>More</h5>
+            <ul class="footer-menu">                        
+              <li><a href="/en/questions">advices and Questions</a></li>                   
+              <li><a href="/en">Advertise</a></li>
+              <li><a href="/en/appointment">Join As Doctors</a></li>
             </ul>
           </div>
         </div>        
-        <div class="col-sm-6 col-lg-4 py-3" style="direction: rtl; text-align: right;">
+        <div class="col-sm-6 col-lg-4 py-3">
           <div class="footer-link-info">
-            <h5>ارتباط با ما</h5>  
-            <ul class="footer-menu footer-menu-fa">  
+            <h5>Contact Us</h5>  
+            <ul class="footer-menu">  
               <li>                                           
-                  <i class="mai-location"></i> آدرس : 
+                  <i class="mai-location"></i> Address : 
                   <a id="clinic-flat"></a>               
                   <br />
                   <a id="clinic-street"></a>
@@ -117,15 +117,15 @@ function clinic_info(outcome){
                   <a id="clinic-country"></a>                         
               </li>   
               <li>               
-                  <i class="mai-call"></i> تلفن 1 :
+                  <i class="mai-call"></i> Phone1 :
                   <a href="#" id="clinic-phone1"></a>                                
               </li>
               <li>                
-                  <i class="mai-call"></i> تلفن 2 :                
+                  <i class="mai-call"></i> Phone2 :                
                   <a href="#" id="clinic-phone2"></a>                
               </li>
               <li>                
-                  <i class="mai-mail"></i> ایمیل :  
+                  <i class="mai-mail"></i> Email :
                   <a href="#" id="clinic-email"></a>                
               </li>
                 
@@ -141,7 +141,7 @@ function clinic_info(outcome){
       </div>  
 
       <hr>
-      <p id="copyright">Copyright &copy; 2023 <a href="/" target="_blank">Point Cast</a>. All right reserved</p>          
+      <p id="copyright">Copyright &copy; 2023 <a href="/en/" target="_blank">Point Cast</a>. All right reserved</p>          
     </div>
     `);
  

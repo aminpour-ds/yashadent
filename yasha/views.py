@@ -31,10 +31,11 @@ class ServiceTypeViewSet(ModelViewSet):
     pagination_class = DefaultPagination
 
 
-class InsuranceViewSet(ModelViewSet):
+class PartnersViewSet(ModelViewSet):
     queryset = Insurance.objects.all()
     serializer_class = InsuranceSerializer
     permission_classes = [IsAdminOrReadOnly]
+    pagination_class = DefaultPagination
 
     
 class ReviewViewSet(ModelViewSet):
