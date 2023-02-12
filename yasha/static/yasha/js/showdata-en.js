@@ -1,9 +1,11 @@
+import { switch_page } from './switchpage.js';
+
 window.onload = about();
 
 
 function clinic_info(outcome){   
 
-    clinic_logo = "/static/yasha/img/favicon75.png";
+    let clinic_logo = "/static/yasha/img/favicon.png";
 
     $('#site-header').html(`
     <div class="topbar">
@@ -26,10 +28,10 @@ function clinic_info(outcome){
                     </div>
                 </div>
                 <div class="col-sm-1 text-center text-sm">
-                    <div class="language-info">
-                        <a href="/en" id="language1">EN</a>
+                    <div class="language-info">         
+                        <a class="lan" href="" id="language1">EN</a> 
                         <span class="divider">|</span>
-                        <a href="/" id="language2">FA</a>
+                        <a class="lan" href="" id="language2">FA</a>
                     </div>
                 </div>
             </div> 
@@ -55,21 +57,21 @@ function clinic_info(outcome){
 
             <div class="collapse navbar-collapse" id="navbarSupport">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                    <a class="nav-link" href="/en">HOME</a>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/en/">HOME</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/en/service/1">SERVICES</a>
+                    <a class="nav-link" href="/en/service/1/">SERVICES</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/en/doctors">DOCTORS</a>
+                    <a class="nav-link" href="/en/doctors/">DOCTORS</a>
                     </li>
                     
                     <li class="nav-item">
-                    <a class="nav-link" href="/en/partners">INSURANCE AND PARTNERS</a>
+                    <a class="nav-link" href="/en/partners/">INSURANCE AND PARTNERS</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/en/questions">YOUR QUESTIONS</a>
+                    <a class="nav-link" href="/en/samples/">GALLERY</a>
                     </li>
                     <li class="nav-item">
                     <a class="btn btn-primary ml-lg-3" href="/en/appointment">BOOK NOW</a>
@@ -79,6 +81,10 @@ function clinic_info(outcome){
         </div> 
     </nav>
     `); 
+
+
+    switch_page();
+    
 
     $('#site-footer').html(`
     <div class="container">
@@ -97,7 +103,7 @@ function clinic_info(outcome){
           <div class="footer-link-info">
             <h5>More</h5>
             <ul class="footer-menu">                        
-              <li><a href="/en/questions">advices and Questions</a></li>                   
+              <li><a href="/en/samples">Gallery</a></li>                   
               <li><a href="/en">Advertise</a></li>
               <li><a href="/en/appointment">Join As Doctors</a></li>
             </ul>
@@ -151,10 +157,10 @@ function clinic_info(outcome){
     $('#clinic-email').html(`${outcome.results[0].email}`);  
     $('#clinic-phone1').html(`${outcome.results[0].phone1}`);  
     $('#clinic-phone2').html(`${outcome.results[0].phone2}`);  
-    $('#clinic-country').html(`${outcome.results[0].country}`);  
-    $('#clinic-city').html(`${outcome.results[0].city} / `);  
-    $('#clinic-street').html(`${outcome.results[0].street} ,`);  
-    $('#clinic-flat').html(`${outcome.results[0].flat} ,`);       
+    $('#clinic-country').html(`${outcome.results[0].country_en}`);  
+    $('#clinic-city').html(`${outcome.results[0].city_en} / `);  
+    $('#clinic-street').html(`${outcome.results[0].street_en} ,`);  
+    $('#clinic-flat').html(`${outcome.results[0].flat_en} ,`);       
 
     // page-banner photo
     $('#video-welcome').html(`<source type="video/mp4" src=${outcome.results[0].videos[0].video}>`);       
@@ -169,7 +175,7 @@ function clinic_info(outcome){
 
 
 function about(){              
-    url = '/api/about/';    
+    let url = '/api/about/';    
     
     const items = fetch(url, {
         method: 'GET',

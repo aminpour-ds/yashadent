@@ -17,16 +17,19 @@ class Department(models.Model):
 
 
 class ServiceType(models.Model):
-    name = models.CharField(("نوع خدمت"), max_length=150)
-    description = models.TextField(("توضیحات"), null=True, blank=True)
+    name_fa = models.CharField(("نوع خدمت"), max_length=150)
+    description_fa = models.TextField(("توضیحات"))
     last_update = models.DateTimeField(("آخرین بروزرسانی"), auto_now=True)
+    
+    name_en = models.CharField(max_length=150)
+    description_en = models.TextField()
 
     def __str__(self):
-        return self.name
+        return self.name_fa
 
     class Meta:
         verbose_name_plural = 'نوع خدمت'
-        ordering = ['id']
+        ordering = ['name_fa']
 
 
 class ServiceTypeImage(models.Model):
@@ -48,69 +51,25 @@ class Service(models.Model):
     duration = models.DurationField(("مدت زمان"), default=None)
     active = models.BooleanField(("فعال"))
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name_plural = 'خدمات'
         ordering = ['id']
 
 
 class Insurance(models.Model):
-    name = models.CharField(("نام بیمه"), max_length=150)
+    name_en = models.CharField(max_length=150)
+    description_en = models.TextField()
+    name_fa = models.CharField(("نام بیمه"), max_length=150)
+    description_fa = models.TextField(("توضیحات"))
     
     def __str__(self):
-        return self.name
+        return self.name_fa
 
     class Meta:
         verbose_name_plural = 'بیمه'
-
-
-class Patient(models.Model):
-    REFERRER_PERSON = 'Person'
-    REFERRER_INSTAGRAM = 'Instagram'
-    REFERRER_INTERNET = 'Internet'
-    REFERRER_TRACT = 'Tract'
-    REFERRER_ORGANIZATION = 'Organization'
-
-    REFERRER_CHOICES = [
-        (REFERRER_PERSON, 'شخص'),
-        (REFERRER_INSTAGRAM, 'اینستاگرام'),
-        (REFERRER_INTERNET, 'اینترنت'),
-        (REFERRER_TRACT, 'تراکت'),
-        (REFERRER_ORGANIZATION, 'سازمان')
-    ]
-
-    GENDER_MAN = 'man'
-    GENDER_WOMAN = 'woman'
-    GENDER_OTHER = 'other'
-
-    GENDER_CHOICES = [
-        (GENDER_MAN, 'مرد'),
-        (GENDER_WOMAN, 'زن'),
-        (GENDER_OTHER, 'سایر')
-    ]
-    
-    first_name = models.CharField(("نام"), max_length=150)
-    last_name = models.CharField(("نام خانوادگی"), max_length=150)
-    father_name = models.CharField(("نام پدر"), max_length=150)
-    identity = models.CharField(("کد ملی"), unique=True, max_length=20)
-    phone = models.CharField(("تلفن"), max_length=255)
-    mobile = models.CharField(("موبایل"), max_length=255)
-    date_joined = models.DateField(("تاریخ پذیرش بیمار"), default=timezone.now)
-    birth_date = models.DateField(("تاریخ تولد"))
-    guardian = models.CharField(("کد ملی سرپرست بیمار"), max_length=20)
-    referrer = models.CharField(("معرف"), max_length=20, choices=REFERRER_CHOICES, default=REFERRER_ORGANIZATION)
-    gender = models.CharField(("جنسیت"), max_length=20, choices=GENDER_CHOICES, default=GENDER_WOMAN)
-    description = models.CharField(("توضیحات"), max_length=255, null=True, blank=True)
-    email = models.EmailField(("ایمیل"), blank=True, unique=True)
-    insurance = models.ForeignKey(Insurance, on_delete=models.PROTECT, related_name='patient', verbose_name=("نام بیمه"))
-    start_date_insurance = models.DateField(("تاریخ شروع بیمه"))
-    end_date_insurance = models.DateField(("تاریخ پایان بیمه"))
-
-    def __str__(self):
-        return self.identity
-
-    class Meta:
-        verbose_name_plural = 'بیماران'
-        ordering = ['first_name', 'last_name']
 
 
 class Doctor(models.Model):
@@ -125,30 +84,42 @@ class Doctor(models.Model):
     ]
     
     identity = models.CharField(("کد ملی"), unique=True, max_length=20)
-    professionalStatement = models.CharField(("تخصص"), max_length=255, null=True)
+    professionalStatement_fa = models.CharField(("تخصص"), max_length=255)
+    professionalStatement_en = models.CharField(max_length=255)
     phone = models.CharField(("تلفن"), max_length=255)
     mobile = models.CharField(("موبایل"), max_length=255)
     gender = models.CharField(("جنسیت"), max_length=20, choices=GENDER_CHOICES, default=GENDER_WOMAN)
     Contract = models.DecimalField(("درصد قرارداد"), max_digits=10, decimal_places=2, validators=[MinValueValidator(1)])
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=("کاربر"))
 
-    @admin.display(ordering='user__first_name')
-    def first_name(self):
+    def first_name_en(self):
         return self.user.first_name
 
-    @admin.display(ordering='user__last_name')
-    def last_name(self):
-        return self.user.last_name
+    def last_name_en(self):
+        return self.user.last_name    
+
+    @admin.display(ordering='user__last_name_fa')
+    def last_name_fa(self):
+        return self.user.last_name_fa
+    
+    last_name_fa.short_description = 'نام خانوادگی' 
+
+    def first_name_fa(self):
+        return self.user.first_name_fa
+
+    first_name_fa.short_description = 'نام' 
 
     def email(self):
         return self.user.email
 
+    email.short_description = 'ایمیل' 
+
     def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        return f'{self.user.first_name_fa} {self.user.last_name_fa}'
 
     class Meta:
         verbose_name_plural = 'پزشکان'
-        ordering = ['user__first_name', 'user__last_name']
+        ordering = ['user__last_name_fa']
 
 
 class DoctorImage(models.Model):
@@ -162,30 +133,40 @@ class DoctorImage(models.Model):
         verbose_name_plural = 'تصاویر پزشک'
 
 
-class Review(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    date = models.DateField(auto_now_add=True)
-
+class DoctorPortfolio(models.Model):
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='portfolio', verbose_name=("نام پزشک"))    
+    title_fa = models.CharField(("عنوان"), max_length=255)
+    title_en = models.CharField(max_length=255)
+    image_before = models.ImageField(("آپلود عکس قبل"), upload_to='yasha/images/portfolio', validators=[validate_file_size])        
+    image_after = models.ImageField(("آپلود عکس بعد"), upload_to='yasha/images/portfolio', validators=[validate_file_size])        
+    
     def __str__(self):
-        return 'نظر بیمار'
-
+        return 'نمونه کارها'
+    
     class Meta:
-        verbose_name_plural = 'نظر بیماران'
+        verbose_name_plural = 'نمونه کارها'
 
 
 class About(models.Model):
-    description = models.TextField(("توضیحات"))
+    description_fa = models.TextField(("توضیحات"))
     phone1 = models.CharField(("خط تلفن 1"), max_length=255)
     phone2 = models.CharField(("خط تلفن 2"), max_length=255, null=True)
-    email = models.EmailField(("ایمیل"), blank=True, unique=True)
+    email = models.EmailField(("ایمیل"), unique=True)
     linkedin = models.CharField(("لینکدین"), max_length=255)
     instagram = models.CharField(("اینستاگرام"), max_length=255)
     whatsapp = models.CharField(("واتس اپ"), max_length=255)
-    country = models.CharField(("کشور"), max_length=255)
-    city = models.CharField(("شهر"), max_length=255)
-    street = models.CharField(("خیابان"), max_length=255)
-    flat = models.CharField(("پلاک"), max_length=255)
+    country_fa = models.CharField(("کشور"), max_length=255)
+    city_fa = models.CharField(("شهر"), max_length=255)
+    street_fa = models.CharField(("خیابان"), max_length=255)
+    flat_fa = models.CharField(("پلاک"), max_length=255)
+    workingـhours_fa = models.CharField(("ساعات کاری"), max_length=500)
+    
+    description_en = models.TextField()
+    country_en = models.CharField(max_length=255)
+    city_en = models.CharField(max_length=255)
+    street_en = models.CharField(max_length=255)
+    flat_en = models.CharField(max_length=255)
+    workingـhours_en = models.CharField(max_length=500)
 
     def __str__(self):
         return 'درباره ما'
@@ -218,6 +199,7 @@ class ClinicVideo(models.Model):
     class Meta:
         verbose_name_plural = 'ویدئوهای کلینیک'
 
+
 class AppointmentRequest(models.Model):
     name = models.CharField(("نام"), max_length=255)
     your_problem = models.CharField(("مشکل بیمار"), max_length=255)
@@ -232,14 +214,134 @@ class AppointmentRequest(models.Model):
         verbose_name_plural = 'درخواست وقت'
 
 
-class Questions(models.Model):    
-    question = models.TextField()
-    description = models.TextField()
-    date = models.DateField(auto_now_add=True)
+class Colleague(models.Model):
+    professionalStatement_fa = models.CharField(("تخصص"), max_length=255)
+    professionalStatement_en = models.CharField(max_length=255)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=("کاربر"))
+
+    def first_name_en(self):
+        return self.user.first_name
+
+    def last_name_en(self):
+        return self.user.last_name    
+
+    @admin.display(ordering='user__last_name_fa')
+    def last_name_fa(self):
+        return self.user.last_name_fa
+    
+    last_name_fa.short_description = 'نام خانوادگی' 
+
+    def first_name_fa(self):
+        return self.user.first_name_fa
+
+    first_name_fa.short_description = 'نام' 
 
     def __str__(self):
-        return 'سوالات'
+        return f'{self.user.first_name_fa} {self.user.last_name_fa}'
 
     class Meta:
-        verbose_name_plural = 'سوالات'
+        verbose_name_plural = 'همکاران'
+        ordering = ['user__last_name_fa']
+
+
+class ColleagueImage(models.Model):
+    colleague = models.ForeignKey(Colleague, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='yasha/images/colleague', validators=[validate_file_size])        
+
+    def __str__(self):
+        return 'تصویر همکار'
+    
+    class Meta:
+        verbose_name_plural = 'تصویر همکار'
+
+
+# ===================================inactive ===========================================================
+
+# class Patient(models.Model):
+#     REFERRER_PERSON = 'Person'
+#     REFERRER_INSTAGRAM = 'Instagram'
+#     REFERRER_INTERNET = 'Internet'
+#     REFERRER_TRACT = 'Tract'
+#     REFERRER_ORGANIZATION = 'Organization'
+
+#     REFERRER_CHOICES = [
+#         (REFERRER_PERSON, 'شخص'),
+#         (REFERRER_INSTAGRAM, 'اینستاگرام'),
+#         (REFERRER_INTERNET, 'اینترنت'),
+#         (REFERRER_TRACT, 'تراکت'),
+#         (REFERRER_ORGANIZATION, 'سازمان')
+#     ]
+
+#     GENDER_MAN = 'man'
+#     GENDER_WOMAN = 'woman'
+#     GENDER_OTHER = 'other'
+
+#     GENDER_CHOICES = [
+#         (GENDER_MAN, 'مرد'),
+#         (GENDER_WOMAN, 'زن'),
+#         (GENDER_OTHER, 'سایر')
+#     ]
+    
+#     first_name = models.CharField(("نام"), max_length=150)
+#     last_name = models.CharField(("نام خانوادگی"), max_length=150)
+#     father_name = models.CharField(("نام پدر"), max_length=150)
+#     identity = models.CharField(("کد ملی"), unique=True, max_length=20)
+#     phone = models.CharField(("تلفن"), max_length=255)
+#     mobile = models.CharField(("موبایل"), max_length=255)
+#     date_joined = models.DateField(("تاریخ پذیرش بیمار"), default=timezone.now)
+#     birth_date = models.DateField(("تاریخ تولد"))
+#     guardian = models.CharField(("کد ملی سرپرست بیمار"), max_length=20)
+#     referrer = models.CharField(("معرف"), max_length=20, choices=REFERRER_CHOICES, default=REFERRER_ORGANIZATION)
+#     gender = models.CharField(("جنسیت"), max_length=20, choices=GENDER_CHOICES, default=GENDER_WOMAN)
+#     description = models.CharField(("توضیحات"), max_length=255, null=True, blank=True)
+#     email = models.EmailField(("ایمیل"), blank=True, unique=True)
+#     insurance = models.ForeignKey(Insurance, on_delete=models.PROTECT, related_name='patient', verbose_name=("نام بیمه"))
+#     start_date_insurance = models.DateField(("تاریخ شروع بیمه"))
+#     end_date_insurance = models.DateField(("تاریخ پایان بیمه"))
+
+#     def __str__(self):
+#         return self.identity
+
+#     class Meta:
+#         verbose_name_plural = 'بیماران'
+#         ordering = ['first_name', 'last_name']
+
+
+# class Review(models.Model):
+#     name = models.CharField(max_length=255)
+#     description = models.TextField()
+#     date = models.DateField(auto_now_add=True)
+
+#     def __str__(self):
+#         return 'نظر بیمار'
+
+#     class Meta:
+#         verbose_name_plural = 'نظر بیماران'
+
+
+# class Category(models.Model):
+#     name_fa = models.CharField(("نام"), max_length=150)
+#     name_en = models.CharField(max_length=150)
+
+#     def __str__(self):
+#         return 'دسته بندی سوالات'
+
+#     class Meta:
+#         verbose_name_plural = 'دسته بندی سوالات'
+
+
+# class Questions(models.Model):    
+#     question_fa = models.TextField(('سوال'))
+#     description_fa = models.TextField(('توضیحات'))
+#     question_en = models.TextField()
+#     description_en = models.TextField()
+#     date = models.DateField(auto_now_add=True)
+#     # category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='questions', verbose_name="دسته بندی")
+
+#     def __str__(self):
+#         return 'سوالات'
+
+#     class Meta:
+#         verbose_name_plural = 'سوالات'
                 
+              

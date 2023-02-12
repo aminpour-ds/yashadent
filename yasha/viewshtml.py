@@ -57,16 +57,6 @@ def Servicetype_EN(request, pk):
     return render(request, 'yasha-en/servicetype.html', {'results' :  serializer.data, 'service_detail' : service_detail.data})
 
 
-class Questions(views.QuestionsViewSet):    
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'questions.html'
-
-
-class Questions_EN(views.QuestionsViewSet):    
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'yasha-en/questions.html'
-
-
 class Partners(views.PartnersViewSet):    
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'partners.html'
@@ -75,3 +65,26 @@ class Partners(views.PartnersViewSet):
 class Partners_EN(views.PartnersViewSet):    
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'yasha-en/partners.html'
+
+
+class Samples(views.SamplesViewSet):    
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'samples.html'
+
+
+class Samples_EN(views.SamplesViewSet):    
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'yasha-en/samples.html'
+
+
+
+# ===================================inactive ===========================================================
+
+# class Questions(views.QuestionsViewSet):    
+#     renderer_classes = [TemplateHTMLRenderer]
+#     template_name = 'questions.html'
+
+
+# class Questions_EN(views.QuestionsViewSet):    
+#     renderer_classes = [TemplateHTMLRenderer]
+#     template_name = 'yasha-en/questions.html'

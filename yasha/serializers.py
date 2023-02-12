@@ -1,6 +1,21 @@
 from rest_framework import serializers
-from .models import Doctor, Service, Insurance, Review, About, DoctorImage, ServiceType, ServiceTypeImage, AppointmentRequest, Questions, ClinicVideo, ClinicImage
+from .models import Doctor, Service, Insurance, About, DoctorImage, ServiceType, ServiceTypeImage, \
+AppointmentRequest, ClinicVideo, ClinicImage, DoctorPortfolio, ColleagueImage, Colleague
 
+
+
+class ColleagueImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ColleagueImage
+        fields = ['id', 'image']
+
+
+class ColleagueSerializer(serializers.ModelSerializer):
+    images = ColleagueImageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Colleague
+        fields = ['first_name_fa', 'last_name_fa', 'professionalStatement_fa', 'first_name_en', 'last_name_en', 'professionalStatement_en', 'images']
 
 
 class DoctorImageSerializer(serializers.ModelSerializer):
@@ -18,7 +33,7 @@ class DoctorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Doctor
-        fields = ['professionalStatement', 'mobile', 'first_name', 'last_name', 'email', 'images']
+        fields = ['first_name_fa', 'last_name_fa', 'professionalStatement_fa', 'mobile', 'email', 'images', 'first_name_en', 'last_name_en', 'professionalStatement_en']
 
 
 class ServiceTypeImageSerializer(serializers.ModelSerializer):
@@ -32,42 +47,32 @@ class ServiceTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ServiceType
-        fields = ['id', 'name', 'images', 'description', 'last_update']
+        fields = ['id', 'name_fa', 'images', 'description_fa', 'last_update', 'name_en', 'description_en']
 
 
 class ServiceSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Service
         fields = ['servicetype', 'name', 'cost']
 
 
 class InsuranceSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Insurance
-        fields = ['name']
-
-
-class ReviewSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Review
-        fields = ['name', 'description', 'date']
+        fields = ['name_fa', 'description_fa', 'name_en', 'description_en']
 
 
 class ClinicImageSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = ClinicImage
         fields = ['id', 'name', 'image']
 
 
 class ClinicVideoSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = ClinicVideo
         fields = ['id', 'name', 'video']
+
 
 class AboutSerializer(serializers.ModelSerializer):
     images = ClinicImageSerializer(many=True, read_only=True)
@@ -75,18 +80,38 @@ class AboutSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = About
-        fields = ['description', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'country', 'city', 'street', 'flat', 'images', 'videos']
+        fields = ['description_fa', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'country_fa', 'city_fa', 'street_fa', 'flat_fa', 'workingـhours_fa', 'description_en', 'country_en', 'city_en', 'street_en', 'flat_en', 'workingـhours_en', 'images', 'videos']
 
         
 class AppointmentRequestSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = AppointmentRequest
         fields = ['name', 'your_problem', 'phone', 'description', 'date']
 
         
-class QuestionSerializer(serializers.ModelSerializer):
-
+class DoctorPortfolioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Questions
-        fields = ['id', 'question', 'description', 'date']
+        model = DoctorPortfolio
+        fields = ['id', 'doctor', 'title_fa', 'title_en', 'image_before', 'image_after']
+
+
+
+# ===================================inactive ===========================================================
+
+# class ReviewSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Review
+#         fields = ['name', 'description', 'date']
+
+
+# class CategorySerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Category
+#         fields = ['id', 'name_fa', 'name_en']
+
+
+# class QuestionSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Questions
+#         fields = ['id', 'question_fa', 'description_fa', 'question_en', 'description_en', 'date']
+

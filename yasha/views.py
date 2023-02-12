@@ -1,8 +1,16 @@
 from rest_framework.viewsets import ModelViewSet
-from .serializers import DoctorSerializer, ServiceSerializer, InsuranceSerializer, ReviewSerializer, AboutSerializer, ServiceTypeSerializer, AppointmentRequestSerializer, QuestionSerializer
-from .models import Doctor, Service, Insurance, Review, About, ServiceType, AppointmentRequest, Questions
+from .serializers import DoctorSerializer, ServiceSerializer, InsuranceSerializer, AboutSerializer, ServiceTypeSerializer, \
+AppointmentRequestSerializer, DoctorPortfolioSerializer, ColleagueSerializer
+from .models import Doctor, Service, Insurance, About, ServiceType, AppointmentRequest, DoctorPortfolio, Colleague
 from .permissions import IsAdminOrReadOnly, IsAdminOrPatient
 from .pagination import DefaultPagination
+
+
+class ColleagueViewSet(ModelViewSet):
+    queryset = Colleague.objects.all()
+    serializer_class = ColleagueSerializer
+    permission_classes = [IsAdminOrReadOnly]
+    pagination_class = DefaultPagination
 
 
 class DoctorViewSet(ModelViewSet):
@@ -36,12 +44,6 @@ class PartnersViewSet(ModelViewSet):
     serializer_class = InsuranceSerializer
     permission_classes = [IsAdminOrReadOnly]
     pagination_class = DefaultPagination
-
-    
-class ReviewViewSet(ModelViewSet):
-    queryset = Review.objects.all()
-    serializer_class = ReviewSerializer
-    permission_classes = [IsAdminOrReadOnly]
     
 
 class AboutViewSet(ModelViewSet):            
@@ -55,12 +57,26 @@ class AppointmentRequestViewSet(ModelViewSet):
     http_method_names = ['get', 'post', 'head', 'options']    
     queryset = AppointmentRequest.objects.all()
     serializer_class = AppointmentRequestSerializer
-
-
-class QuestionsViewSet(ModelViewSet):         
-    queryset = Questions.objects.all()
-    serializer_class = QuestionSerializer
-    pagination_class = DefaultPagination
-    permission_classes = [IsAdminOrPatient]
     
            
+class SamplesViewSet(ModelViewSet):
+    queryset = DoctorPortfolio.objects.all()
+    serializer_class = DoctorPortfolioSerializer
+    pagination_class = DefaultPagination
+    permission_classes = [IsAdminOrReadOnly]
+
+
+
+# ===================================inactive ===========================================================
+
+# class ReviewViewSet(ModelViewSet):
+#     queryset = Review.objects.all()
+#     serializer_class = ReviewSerializer
+#     permission_classes = [IsAdminOrReadOnly]
+
+
+# class QuestionsViewSet(ModelViewSet):         
+#     queryset = Questions.objects.all()
+#     serializer_class = QuestionSerializer
+#     pagination_class = DefaultPagination
+#     permission_classes = [IsAdminOrPatient]

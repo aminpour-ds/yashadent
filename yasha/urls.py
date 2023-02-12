@@ -6,10 +6,10 @@ from . import views, viewshtml
 
 router = routers.DefaultRouter()
 router.register('doctors', views.DoctorViewSet)
+router.register('colleague', views.ColleagueViewSet)
 router.register('partners', views.PartnersViewSet)
-router.register('questions', views.QuestionsViewSet)
-router.register('review', views.ReviewViewSet)
 router.register('about', views.AboutViewSet, basename='about')
+router.register('samples', views.SamplesViewSet, basename='samples')
 router.register('AppointmentRequest', views.AppointmentRequestViewSet)
 
 urlpatterns = [
@@ -23,8 +23,8 @@ urlpatterns = [
 html_en_router = routers.DefaultRouter()
 html_en_router.register('doctors', viewshtml.Doctors_EN)
 html_en_router.register('partners', viewshtml.Partners_EN)
-html_en_router.register('questions', viewshtml.Questions_EN)
 html_en_router.register('about', viewshtml.About_EN, basename='about')
+html_en_router.register('samples', viewshtml.Samples_EN, basename='samples')
 html_en_router.register('', viewshtml.Index_EN)
 
 urlpatterns += [
@@ -38,8 +38,8 @@ urlpatterns += [
 html_router = routers.DefaultRouter()
 html_router.register('doctors', viewshtml.Doctors)
 html_router.register('partners', viewshtml.Partners)
-html_router.register('questions', viewshtml.Questions)
 html_router.register('about', viewshtml.About, basename='about')
+html_router.register('samples', viewshtml.Samples, basename='samples')
 html_router.register('', viewshtml.Index)
 
 urlpatterns += [

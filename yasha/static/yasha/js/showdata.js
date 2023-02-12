@@ -1,9 +1,11 @@
+import { switch_page } from './switchpage.js';
+
 window.onload = about();
 
 
-function clinic_info(outcome){   
+function clinic_info(outcome){
 
-    clinic_logo = "/static/yasha/img/favicon75.png";
+    let clinic_logo = "/static/yasha/img/favicon.png";
 
     $('#site-header').html(`
     <div class="topbar">
@@ -26,10 +28,10 @@ function clinic_info(outcome){
                     </div>
                 </div>
                 <div class="col-sm-1 text-center text-sm">
-                    <div class="language-info">
-                    <a href="/" id="language2">فارسی</a>
-                    <span class="divider">|</span>
-                    <a href="/en" id="language1">انگلیسی</a>
+                    <div class="language-info">    
+                        <a class="lan" id="language2">فارسی</a>
+                        <span class="divider">|</span>
+                        <a class="lan" id="language1">انگلیسی</a>
                     </div>
                 </div>
             </div> 
@@ -55,21 +57,21 @@ function clinic_info(outcome){
 
             <div class="collapse navbar-collapse" id="navbarSupport">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                     <a class="nav-link" href="/">صفحه اصلی</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/service/1">خدمات</a>
+                    <li class="nav-itemsite-header">
+                    <a class="nav-link" href="/service/1/">خدمات</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/doctors">پزشکان</a>
+                    <a class="nav-link" href="/doctors/">پزشکان</a>
                     </li>
                     
                     <li class="nav-item">
-                    <a class="nav-link" href="/partners">بیمه ها و شرکا</a>
+                    <a class="nav-link" href="/partners/">بیمه ها و شرکا</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/questions">سوالات شما</a>
+                    <a class="nav-link" href="/samples/">نمونه کارها</a>
                     </li>
                     <li class="nav-item">
                     <a class="btn btn-primary ml-lg-3" href="/appointment">تعیین وقت</a>
@@ -80,6 +82,10 @@ function clinic_info(outcome){
     </nav>
     `); 
 
+
+    switch_page();
+
+    
     $('#site-footer').html(`
     <div class="container">
       <div class="row px-md-3">
@@ -97,7 +103,7 @@ function clinic_info(outcome){
           <div class="footer-link-info">
             <h5>بیشتر</h5>
             <ul class="footer-menu footer-menu-fa">                        
-              <li><a href="/questions">پرسش و پاسخ</a></li>                   
+              <li><a href="/samples">نمونه کارها</a></li>                   
               <li><a href="/">تبلیغات</a></li>
               <li><a href="/appointment">درخواست همکاری با ما</a></li>
             </ul>
@@ -108,13 +114,9 @@ function clinic_info(outcome){
             <h5>ارتباط با ما</h5>  
             <ul class="footer-menu footer-menu-fa">  
               <li>                                           
-                  <i class="mai-location"></i> آدرس : 
+                  <i class="mai-location"></i> آدرس :                   
+                  <a id="clinic-country"></a>                                             
                   <a id="clinic-flat"></a>               
-                  <br />
-                  <a id="clinic-street"></a>
-                  <br />
-                  <a id="clinic-city"></a>              
-                  <a id="clinic-country"></a>                         
               </li>   
               <li>               
                   <i class="mai-call"></i> تلفن 1 :
@@ -151,10 +153,8 @@ function clinic_info(outcome){
     $('#clinic-email').html(`${outcome.results[0].email}`);  
     $('#clinic-phone1').html(`${outcome.results[0].phone1}`);  
     $('#clinic-phone2').html(`${outcome.results[0].phone2}`);  
-    $('#clinic-country').html(`${outcome.results[0].country}`);  
-    $('#clinic-city').html(`${outcome.results[0].city} / `);  
-    $('#clinic-street').html(`${outcome.results[0].street} ,`);  
-    $('#clinic-flat').html(`${outcome.results[0].flat} ,`);       
+    $('#clinic-country').html(`${outcome.results[0].country_fa} - ${outcome.results[0].city_fa} - ${outcome.results[0].street_fa} - `);    
+    $('#clinic-flat').html(`${outcome.results[0].flat_fa}`);       
 
     // page-banner photo
     $('#video-welcome').html(`<source type="video/mp4" src=${outcome.results[0].videos[0].video}>`);       
@@ -169,7 +169,7 @@ function clinic_info(outcome){
 
 
 function about(){              
-    url = '/api/about/';    
+    let url = '/api/about/';    
     
     const items = fetch(url, {
         method: 'GET',

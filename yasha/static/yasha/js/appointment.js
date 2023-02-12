@@ -30,13 +30,21 @@ function submitRequest() {
             }
         })
         .then(data => {
-            window.location.assign("/");
-            alert('درخواست شما ثبت شده است، به زودی برای تعیین وقت ملاقات با شما تماس گرفته خواهد شد. متشکرم!');
+            if(document.documentElement.attributes.lang.value === "fa"){
+                alert('درخواست شما ثبت شده است، به زودی برای تعیین وقت ملاقات با شما تماس گرفته خواهد شد. متشکرم!');
+                window.location.assign("/");
+            } else{
+                alert('Your request has been registered, you will be contacted soon to set up an appointment time. thank you!');
+                window.location.assign("/en");  
+            }
         })
         .catch((err) => {                    
-            console.log(err);
-            alert('اطلاعات وارد شده صحیح نیست، دوباره امتحان کنید!');
-            
+            if(document.documentElement.attributes.lang.value === "fa"){
+                alert('اطلاعات وارد شده صحیح نیست، دوباره امتحان کنید!');                
+            } else {
+                alert('The entered information is not correct, try again!');
+            }
+            window.location.assign(document.location.href);            
         });
     });            
 }
