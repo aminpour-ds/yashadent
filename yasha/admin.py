@@ -41,7 +41,7 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 @admin.register(models.Insurance)
 class InsuranceAdmin(admin.ModelAdmin):
-    list_display = ['name_fa', 'description_fa', 'name_en', 'description_en']
+    list_display = ['name_fa', 'description_fa', 'name_en', 'description_en', 'image']
 
 
 class ServiceTypeImageInline(admin.TabularInline):
@@ -143,8 +143,6 @@ class PortfolioImageInline(admin.ModelAdmin):
     }
 
 
-
-# ==============================================================================================
 class ColleagueImageInline(admin.TabularInline):
     model = models.ColleagueImage
     readonly_fields = ['thumbnail']

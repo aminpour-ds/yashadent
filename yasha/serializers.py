@@ -59,7 +59,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 class InsuranceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Insurance
-        fields = ['name_fa', 'description_fa', 'name_en', 'description_en']
+        fields = ['name_fa', 'description_fa', 'name_en', 'description_en', 'image']
 
 
 class ClinicImageSerializer(serializers.ModelSerializer):
