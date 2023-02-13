@@ -163,13 +163,22 @@ function clinic_info(outcome){
     $('#clinic-flat').html(`${outcome.results[0].flat_en} ,`);       
 
     // page-banner photo
-    $('#video-welcome').html(`<source type="video/mp4" src=${outcome.results[0].videos[0].video}>`);       
-    if (document.getElementById('image-doctor') != null) {
-        document.getElementById('image-doctor').style.backgroundImage= `url(${outcome.results[0].images[3].image})`;
-    } else if (document.getElementById('image-service') != null) {
-        document.getElementById('image-service').style.backgroundImage= `url(${outcome.results[0].images[4].image})`;
-    } else if (document.getElementById('image-question') != null) {
-        document.getElementById('image-question').style.backgroundImage= `url(${outcome.results[0].images[2].image})`;
+    $('#video-welcome').html(`<source type="video/mp4" src=${outcome.results[0].videos[0].video}>`);      
+
+    for (let index=0; index < outcome.results[0].images.length; index++){
+        if(outcome.results[0].images[index].name == "تعیین وقت" && document.getElementById('image-appointment') != null){
+            document.getElementById('image-appointment').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
+        } else if(outcome.results[0].images[index].name == "درباره ما" && document.getElementById('image-about') != null){
+            document.getElementById('image-about').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
+        } else if(outcome.results[0].images[index].name == "نمونه کار" && document.getElementById('image-sample') != null){
+            document.getElementById('image-sample').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
+        } else if(outcome.results[0].images[index].name == "پزشکان" && document.getElementById('image-doctor') != null){
+            document.getElementById('image-doctor').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
+        } else if(outcome.results[0].images[index].name == "خدمات" && document.getElementById('image-service') != null){
+            document.getElementById('image-service').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
+        } else if(outcome.results[0].images[index].name == "خدمات" && document.getElementById('image-partners') != null){
+            document.getElementById('image-partners').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
+        }
     }
 }
 
