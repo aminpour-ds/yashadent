@@ -13,18 +13,17 @@ function clinic_info(outcome){
             <div class="row">
                 <div class="col-sm-9 text-sm">
                     <div class="site-info">
-                        <a href="#" id="header-clinic-phone1"></a>
+                        <a id="header-clinic-phone1"></a>
                         <span class="divider">|</span>
-                        <a href="#" id="header-clinic-email"></a>
+                        <a id="header-clinic-email"></a>
                     </div>
                 </div>
                 <div class="col-sm-2 text-right text-sm">
                     <div class="social-mini-button">
-                        <a href="#"><span class="mai-logo-instagram"></span></a>
-                        <a href="#"><span class="mai-logo-linkedin"></span></a>
-                        <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                        <a href="#"><span class="mai-logo-telegram"></span></a>
-                        
+                    <a id="instagram-header" target="_blank"><span class="mai-logo-instagram"></span></a>
+                    <a id="linkedin-header" target="_blank"><span class="mai-logo-linkedin"></span></a>
+                    <a id="whatsapp-header" target="_blank"><span class="mai-logo-whatsapp"></span></a>
+                    <a id="telegram-header" target="_blank"><span class="mai-logo-telegram"></span></a>                                           
                     </div>
                 </div>
                 <div class="col-sm-1 text-center text-sm">
@@ -124,32 +123,42 @@ function clinic_info(outcome){
               </li>   
               <li>               
                   <i class="mai-call"></i> Phone1 :
-                  <a href="#" id="clinic-phone1"></a>                                
+                  <a id="clinic-phone1"></a>                                
               </li>
               <li>                
                   <i class="mai-call"></i> Phone2 :                
-                  <a href="#" id="clinic-phone2"></a>                
+                  <a id="clinic-phone2"></a>                
               </li>
               <li>                
                   <i class="mai-mail"></i> Email :
-                  <a href="#" id="clinic-email"></a>                
+                  <a id="clinic-email"></a>                
               </li>
                 
             </ul>
             <div class="footer-sosmed mt-3">
-              <a href="#" target="_blank"><span class="mai-logo-instagram"></span></a>
-              <a href="#" target="_blank"><span class="mai-logo-linkedin"></span></a>
-              <a href="#" target="_blank"><span class="mai-logo-whatsapp"></span></a>
-              <a href="#" target="_blank"><span class="mai-logo-telegram"></span></a>
+            <a id="instagram-footer" target="_blank"><span class="mai-logo-instagram"></span></a>
+            <a id="linkedin-footer" target="_blank"><span class="mai-logo-linkedin"></span></a>
+            <a id="whatsapp-footer" target="_blank"><span class="mai-logo-whatsapp"></span></a>
+            <a id="telegram-footer" target="_blank"><span class="mai-logo-telegram"></span></a>
             </div>
           </div>
         </div>
       </div>  
 
       <hr>
-      <p id="copyright">Copyright &copy; 2023 <a href="/en/" target="_blank">Point Cast</a>. All right reserved</p>          
+      <p id="copyright">Copyright &copy; 2023 <a href="https://t.me/PointCast" target="_blank">Point Cast</a>. All right reserved</p>          
     </div>
     `);
+
+    document.getElementById('instagram-header').href= `https://instagram.com/${outcome.results[0].instagram}`
+    document.getElementById('linkedin-header').href= `https://www.linkedin.com/in/${outcome.results[0].linkedin}`
+    document.getElementById('whatsapp-header').href= `https://whatsapp.com/${outcome.results[0].whatsapp}`
+    document.getElementById('telegram-header').href= `https://t.me/${outcome.results[0].telegram}`
+
+    document.getElementById('instagram-footer').href= `https://instagram.com/${outcome.results[0].instagram}`
+    document.getElementById('linkedin-footer').href= `https://www.linkedin.com/in/${outcome.results[0].linkedin}`
+    document.getElementById('whatsapp-footer').href= `https://whatsapp.com/${outcome.results[0].whatsapp}`
+    document.getElementById('telegram-footer').href= `https://t.me/${outcome.results[0].telegram}`
  
     $('#header-clinic-phone1').html(`<span class="mai-call text-primary"></span> ${outcome.results[0].phone1}`);  
     $('#header-clinic-email').html(`<span class="mai-mail text-primary"></span> ${outcome.results[0].email}`);  

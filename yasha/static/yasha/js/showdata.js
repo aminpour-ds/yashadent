@@ -13,18 +13,17 @@ function clinic_info(outcome){
             <div class="row">
                 <div class="col-sm-9 text-sm">
                     <div class="site-info">
-                        <a href="#" id="header-clinic-phone1"></a>
+                        <a id="header-clinic-phone1" class="fa" style="direction: ltr; text-align: right;"></a>                        
                         <span class="divider">|</span>
-                        <a href="#" id="header-clinic-email"></a>
+                        <a id="header-clinic-email"></a>
                     </div>
                 </div>
                 <div class="col-sm-2 text-right text-sm">
-                    <div class="social-mini-button">
-                        <a href="#"><span class="mai-logo-instagram"></span></a>
-                        <a href="#"><span class="mai-logo-linkedin"></span></a>
-                        <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                        <a href="#"><span class="mai-logo-telegram"></span></a>
-                        
+                    <div class="social-mini-button">                   
+                        <a id="instagram-header" target="_blank"><span class="mai-logo-instagram"></span></a>
+                        <a id="linkedin-header" target="_blank"><span class="mai-logo-linkedin"></span></a>
+                        <a id="whatsapp-header" target="_blank"><span class="mai-logo-whatsapp"></span></a>
+                        <a id="telegram-header" target="_blank"><span class="mai-logo-telegram"></span></a>
                     </div>
                 </div>
                 <div class="col-sm-1 text-center text-sm">
@@ -119,34 +118,50 @@ function clinic_info(outcome){
                   <a id="clinic-flat"></a>               
               </li>   
               <li>               
-                  <i class="mai-call"></i> تلفن 1 :
-                  <a href="#" id="clinic-phone1"></a>                                
+                  <i class="mai-call"></i>
+                  <lable class="fa">
+                  تلفن 1 :
+                  </lable>
+                  <a id="clinic-phone1" class="fa" style="direction: ltr; text-align: right;"></a>                                
               </li>
               <li>                
-                  <i class="mai-call"></i> تلفن 2 :                
-                  <a href="#" id="clinic-phone2"></a>                
+                  <i class="mai-call"></i>
+                  <lable class="fa">
+                  تلفن 2 :            
+                  </lable>    
+                  <a id="clinic-phone2" class="fa" style="direction: ltr; text-align: right;"></a>                
               </li>
               <li>                
                   <i class="mai-mail"></i> ایمیل :  
-                  <a href="#" id="clinic-email"></a>                
+                  <a id="clinic-email"></a>                
               </li>
                 
             </ul>
             <div class="footer-sosmed mt-3">
-              <a href="#" target="_blank"><span class="mai-logo-instagram"></span></a>
-              <a href="#" target="_blank"><span class="mai-logo-linkedin"></span></a>
-              <a href="#" target="_blank"><span class="mai-logo-whatsapp"></span></a>
-              <a href="#" target="_blank"><span class="mai-logo-telegram"></span></a>
+                <a id="instagram-footer" target="_blank"><span class="mai-logo-instagram"></span></a>
+                <a id="linkedin-footer" target="_blank"><span class="mai-logo-linkedin"></span></a>
+                <a id="whatsapp-footer" target="_blank"><span class="mai-logo-whatsapp"></span></a>
+                <a id="telegram-footer" target="_blank"><span class="mai-logo-telegram"></span></a>
             </div>
           </div>
         </div>
       </div>  
 
       <hr>
-      <p id="copyright">Copyright &copy; 2023 <a href="/" target="_blank">Point Cast</a>. All right reserved</p>          
+      <p id="copyright">Copyright &copy; 2023 <a href="https://t.me/PointCast" target="_blank">Point Cast</a>. All right reserved</p>          
     </div>
     `);
- 
+
+    document.getElementById('instagram-header').href= `https://instagram.com/${outcome.results[0].instagram}`
+    document.getElementById('linkedin-header').href= `https://www.linkedin.com/in/${outcome.results[0].linkedin}`
+    document.getElementById('whatsapp-header').href= `https://whatsapp.com/${outcome.results[0].whatsapp}`
+    document.getElementById('telegram-header').href= `https://t.me/${outcome.results[0].telegram}`
+
+    document.getElementById('instagram-footer').href= `https://instagram.com/${outcome.results[0].instagram}`
+    document.getElementById('linkedin-footer').href= `https://www.linkedin.com/in/${outcome.results[0].linkedin}`
+    document.getElementById('whatsapp-footer').href= `https://whatsapp.com/${outcome.results[0].whatsapp}`
+    document.getElementById('telegram-footer').href= `https://t.me/${outcome.results[0].telegram}`
+
     $('#header-clinic-phone1').html(`<span class="mai-call text-primary"></span> ${outcome.results[0].phone1}`);  
     $('#header-clinic-email').html(`<span class="mai-mail text-primary"></span> ${outcome.results[0].email}`);  
     
@@ -174,6 +189,8 @@ function clinic_info(outcome){
             document.getElementById('image-partners').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
         }
     }
+
+    $('.fa').text(toPersian);
 }
 
 
@@ -208,3 +225,24 @@ function about(){
     });
 }
 
+function toPersian(i,digit){
+    if(digit.length<1)
+        return;
+        
+    let e={0:'۰',
+        1:'۱',
+        2:'۲',
+        3:'۳',
+        4:'۴',
+        5:'۵',
+        6:'۶',
+        7:'۷',
+        8:'۸',
+        9:'۹'};
+
+    for ( i=0;i<10;i++)
+        digit=digit.replaceAll(i.toString(),e[i]);
+    return digit;
+}
+
+$(document).ready(function() {$('.fa').text(toPersian)});
