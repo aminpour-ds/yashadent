@@ -80,7 +80,7 @@ class AboutSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = About
-        fields = ['description_fa', 'email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'country_fa', 'city_fa', 'street_fa', 'flat_fa', 'workingـhours_fa', 'description_en', 'country_en', 'city_en', 'street_en', 'flat_en', 'workingـhours_en', 'images', 'videos']
+        fields = ['description_fa', 'email', 'linkedin', 'instagram', 'whatsapp', 'telegram', 'phone1', 'phone2', 'country_fa', 'city_fa', 'street_fa', 'flat_fa', 'workingـhours_fa', 'description_en', 'country_en', 'city_en', 'street_en', 'flat_en', 'workingـhours_en', 'images', 'videos']
 
         
 class AppointmentRequestSerializer(serializers.ModelSerializer):

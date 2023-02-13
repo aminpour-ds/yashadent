@@ -115,7 +115,7 @@ class ClinicVideoInline(admin.TabularInline):
 @admin.register(models.About)
 class AboutAdmin(admin.ModelAdmin):  
     inlines = [ClinicImageInline, ClinicVideoInline]  
-    list_display = ['email', 'linkedin', 'instagram', 'whatsapp', 'phone1', 'phone2', 'country_fa', 'city_fa', 'street_fa', 'flat_fa']
+    list_display = ['email', 'linkedin', 'instagram', 'whatsapp', 'telegram', 'phone1', 'phone2', 'country_fa', 'city_fa', 'street_fa', 'flat_fa']
     class Media:
         css = {
             'all': ['adminstyle/style.css']

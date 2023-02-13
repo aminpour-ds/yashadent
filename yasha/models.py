@@ -156,6 +156,7 @@ class About(models.Model):
     linkedin = models.CharField(("لینکدین"), max_length=255)
     instagram = models.CharField(("اینستاگرام"), max_length=255)
     whatsapp = models.CharField(("واتس اپ"), max_length=255)
+    telegram = models.CharField(("تلگرام"), max_length=255)
     country_fa = models.CharField(("کشور"), max_length=255)
     city_fa = models.CharField(("شهر"), max_length=255)
     street_fa = models.CharField(("خیابان"), max_length=255)
