@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 
 <head>
   <meta charset="UTF-8">
@@ -28,54 +28,54 @@
   <header id="site-header">
   </header>
 
-  <div class="page-banner overlay-dark bg-image" id="image-doctor">
+  <div class="page-banner overlay-dark bg-image" id="image-partners">
     <div class="banner-section">
       <div class="container text-center wow fadeInUp">
         <nav aria-label="Breadcrumb">
           <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-            <li class="breadcrumb-item"><a href="/en">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Doctors</li>
+            <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+            <li class="breadcrumb-item active" aria-current="page">بیمه ها و شرکا</li>
           </ol>
         </nav>
-        <h1 class="font-weight-normal">Our Doctors</h1>
+        <h1 class="font-weight-normal">بیمه ها و شرکا</h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
 
+  
+
   <div class="page-section">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="row">
-            
-            {% for doctor in results %}     
-            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-              <div class="card-doctor">
-                <div class="header">
-                  <img src={{doctor.images.0.image}} alt="">
-                </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. {{doctor.first_name_en}} {{doctor.last_name_en}}</p>    
-                  <div class="row">  
-                    <div class="col-sm-6">
-                      <span class="text-sm text-grey">{{doctor.professionalStatement_en}}</span>
-                    </div>                  
-                    <div class="col-sm-6" style="text-align: right;">
-                      <a  href="/en/samples">portfolio</a>                      
-                    </div>                
-                  </div>            
-                </div>
+        <div class="col-lg-8 wow fadeInUp" style="direction: rtl; text-align: right;">
+          <h1 class="text-center mb-1">کلینیک یاشا با همکاری بیمه های نامبرده سعی در ارایه بهتر خدمات را دارد.</h1>
+        </div>        
+        <div class="col-lg-10 mt-5">          
+          <div class="page-section bg-light">
+            <div class="container">
+              <div class="row">
+
+                {% for insurance in results %} 
+                <div class="col-md-4 py-3 wow zoomIn">
+                  <div class="row card-insurance">  
+                    <div class="col-sm-6" style="text-align: left;">
+                      <img src={{insurance.image}} alt="">                
+                    </div>
+                    <div class="col-sm-6 insurance-name">
+                      <p style="text-align: right;"><span>{{insurance.name_fa}}</p>  
+                    </div>                                                      
+                  </div>
+                </div>                                                         
+                {% endfor %}
+
               </div>
             </div>
-            {% endfor %}        
-
           </div>
         </div>
       </div>
-    </div> <!-- .container -->
-  </div> <!-- .page-section -->
-
-
+    </div>
+  </div>
+ 
   <footer class="page-footer" id="site-footer">
   </footer>
 
@@ -85,7 +85,7 @@
   <script src="{% static 'yasha/vendor/wow/wow.min.js' %}"></script> 
   <script src="{% static 'yasha/js/theme.js' %}"></script>
   <script type="module" src="{% static 'yasha/js/switchpage.js' %}"></script> 
-  <script type="module" src="{% static 'yasha/js/showdata-en.js' %}"></script> 
+  <script type="module" src="{% static 'yasha/js/showdata.js' %}"></script> 
   
 </body>
 </html>

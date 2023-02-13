@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 
 <head>
   <meta charset="UTF-8">
@@ -33,18 +33,17 @@
       <div class="container text-center wow fadeInUp">
         <nav aria-label="Breadcrumb">
           <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-            <li class="breadcrumb-item"><a href="/en">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Our Services</li>
+            <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+            <li class="breadcrumb-item active" aria-current="page">خدمات</li>
           </ol>
         </nav>
-        <h1 class="font-weight-normal">Services</h1>
+        <h1 class="font-weight-normal">خدمات</h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
   
   <div class="page-section pt-5">
     <div class="container">
-
       <div class="row">
         <div class="col-lg-8">
           <article class="blog-details">
@@ -60,29 +59,29 @@
                 <a>{{service_detail.last_update}}</a>              
               </div>              
             </div>
-            <h2 class="post-title h1">{{service_detail.name_en}}</h2>
-            <div class="post-content">                                
-              <p>{{service_detail.description_en}}</p>                           
+            <h2 class="post-title h1" style="direction: rtl; text-align: right;">{{service_detail.name_fa}}</h2>
+            <div class="post-content" style="direction: rtl; text-align: right;">                                
+              <p>{{service_detail.description_fa}}</p>                           
             </div>                        
 
           </article> <!-- .blog-details -->
          
         </div>
         <div class="col-lg-4">
-          <div class="sidebar">            
+          <div class="sidebar" style="direction: rtl; text-align: right;">            
             <div class="sidebar-block">
-              <h3 class="sidebar-title">Services</h3>              
+              <h3 class="sidebar-title">خدمات</h3>              
               
               {% for srv in results %} 
               <div class="blog-item">
-                <a class="post-thumb" href="/en/service/{{srv.id}}">
+                <a class="post-thumb post-thumb-fa" href="/service/{{srv.id}}">
                   <img src={{srv.images.0.image}} alt="">
                 </a>
-                <div class="content">
-                  <h5 class="post-title"><a href="/en/service/{{srv.id}}">{{srv.name_en}}</a></h5>
+                <div class="content post-info-fa">
+                  <h5 class="post-title"><a href="/service/{{srv.id}}">{{srv.name_fa}}</a></h5>
                   <div class="meta">
-                    <a><span class="mai-calendar"></span> {{srv.last_update}}</a>
-                    <a><span class="mai-person"></span> Admin</a>                   
+                    <a>Admin <span class="mai-person"></span></a>                   
+                    <a>{{srv.last_update}} <span class="mai-calendar"></span></a>
                   </div>
                 </div>
               </div>
@@ -97,14 +96,15 @@
 
   <footer class="page-footer" id="site-footer">
   </footer>
-   
+
+
   <script src="{% static 'yasha/js/jquery-3.5.1.min.js' %}"></script>   
   <script src="{% static 'yasha/js/bootstrap.bundle.min.js' %}"></script> 
   <script src="{% static 'yasha/vendor/owl-carousel/js/owl.carousel.min.js' %}"></script> 
   <script src="{% static 'yasha/vendor/wow/wow.min.js' %}"></script> 
   <script src="{% static 'yasha/js/theme.js' %}"></script>
   <script type="module" src="{% static 'yasha/js/switchpage.js' %}"></script> 
-  <script type="module" src="{% static 'yasha/js/showdata-en.js' %}"></script>
+  <script type="module" src="{% static 'yasha/js/showdata.js' %}"></script> 
 
 </body>
 </html>

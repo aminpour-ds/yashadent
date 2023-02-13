@@ -2,15 +2,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- Site Icons -->
   <link rel="shortcut icon" href="{% static 'yasha/img/favicon.ico' %}" type="image/x-icon" />   
-  <link rel="apple-touch-icon" href="{% static 'yasha/img/favicon-apple-touch-icon-75.ico' %}" />
+  <link rel="apple-touch-icon" href="{% static 'yasha/img/favicon-apple-touch-icon.ico' %}" />
 
   <title>Yasha Dent</title>
 
@@ -19,8 +18,8 @@
   <link rel="stylesheet" href="{% static 'yasha/vendor/owl-carousel/css/owl.carousel.css' %}">
   <link rel="stylesheet" href="{% static 'yasha/vendor/animate/animate.css' %}">
   <link rel="stylesheet" href="{% static 'yasha/css/theme.css' %}">
-
 </head>
+
 <body>
 
   <!-- Back to top button -->
@@ -29,7 +28,53 @@
   <header id="site-header">
   </header>
 
-  <div class="page-section bg-light" id="site-appointment">    
+  <div class="page-banner overlay-dark bg-image" id="image-appointment">
+    <div class="banner-section">
+      <div class="container text-center wow fadeInUp">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+            <li class="breadcrumb-item"><a href="/en">home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact With Us</li>
+          </ol>
+        </nav>
+        <h1 class="font-weight-normal">Contact With Us</h1>
+      </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+  </div> <!-- .page-banner -->
+
+  <div class="page-section" id="site-appointment"> 
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">Please enter your information to schedule an appointment.</h1>
+      <div class="text-lg">
+       <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore eaque porro consequatur ex aspernatur. Explicabo, excepturi accusantium! Placeat voluptates esse ut optio facilis!</p> 
+       <p>At vero eos et accusam et justo duo dolores et ea rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore eaque porro consequatur ex aspernatur. Explicabo, excepturi accusantium! Placeat voluptates esse ut optio facilis!</p> 
+      </div>
+      <form class="main-form">               
+        <div class="row mt-5 ">
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
+            <input type="text" class="form-control" placeholder="Full name" id="inputUsername">
+          </div>        
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select name="departement" id="departement" class="custom-select">
+              <option value="Visit And Consultation">Visit And Consultation</option>
+              <option value="Children">Children</option>
+              <option value="Toothache">Toothache</option>
+              <option value="Removing Dental Plaque">Removing Dental Plaque</option>
+              <option value="Beauty">Beauty</option>
+              <option value="Orthodontic">Orthodontic</option> 
+              <option value="Join As Doctors">Join As Doctors</option>
+            </select>
+          </div>
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <input type="text" class="form-control" placeholder="Number.." id="userNumber">
+          </div>
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <textarea name="message" id="message" class="form-control" rows="6" placeholder="Enter message.."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 wow zoomIn" onclick=submitRequest()>Submit Request</button>
+      </form>
+    </div>   
   </div> <!-- .page-section -->
 
   <footer class="page-footer" id="site-footer">
@@ -39,9 +84,10 @@
   <script src="{% static 'yasha/js/bootstrap.bundle.min.js' %}"></script> 
   <script src="{% static 'yasha/vendor/owl-carousel/js/owl.carousel.min.js' %}"></script> 
   <script src="{% static 'yasha/vendor/wow/wow.min.js' %}"></script> 
-  <script src="{% static 'yasha/js/theme.js' %}"></script> 
-  <script src="{% static 'yasha/js/showdata.js' %}"></script> 
+  <script src="{% static 'yasha/js/theme.js' %}"></script>  
   <script src="{% static 'yasha/js/appointment.js' %}"></script> 
+  <script type="module" src="{% static 'yasha/js/switchpage.js' %}"></script> 
+  <script type="module" src="{% static 'yasha/js/showdata-en.js' %}"></script> 
   
 </body>
 </html>

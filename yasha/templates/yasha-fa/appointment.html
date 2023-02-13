@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="shortcut icon" href="{% static 'yasha/img/favicon.ico' %}" type="image/x-icon" />   
+  <link rel="apple-touch-icon" href="{% static 'yasha/img/favicon-apple-touch-icon.ico' %}" />
+
+  <title>Yasha Dent</title>
+
+  <link rel="stylesheet" href="{% static 'yasha/css/maicons.css' %}">
+  <link rel="stylesheet" href="{% static 'yasha/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'yasha/vendor/owl-carousel/css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'yasha/vendor/animate/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'yasha/css/theme.css' %}">
+</head>
+
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header id="site-header">
+  </header>
+
+  <div class="page-banner overlay-dark bg-image" id="image-appointment">
+    <div class="banner-section">
+      <div class="container text-center wow fadeInUp">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+            <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ارتباط با ما</li>
+          </ol>
+        </nav>
+        <h1 class="font-weight-normal">ارتباط با ما</h1>
+      </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+  </div> <!-- .page-banner -->
+
+  <div class="page-section" id="site-appointment">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp" style="direction: rtl; text-align: right;">برای تعیین وقت لطفا اطلاعات خود را وارد نمایید.</h1>      
+      <div class="text-lg" style="direction: rtl; text-align: right;">
+        <p>کلینیک دندانپزشکی یاشا در سال ۱۴۰۰ در منطقه ۲۲ شهرک راه آهن و بلوار گلها در ملکی به وسعت ۲۲۰ مترمربع با هدف ارایه خدمات دندانپزشکی کارآمد و با کیفیت و با هدف ارایه خدمات پیشگیری و آموزش بهداشت تاسیس شد. این کلینیک در حال حاضر با بیمه های صدا و سیما، پارسیان، آتیه سازان طرف قرار داد بوده و ارایه خدمات برای عموم هم میهنان با حداکثر کیفیت درمان و همراهی کادر درمانی زحمت کش و متخصص و متعهد جریان دارد.
+          علاوه بر این علاقه مندان به حرفه دستیاری دندانپزشکی می توانند با حضور در دوره های عملی آموزش دستیاری دندانپزشکی به این کلینیک مراجعه نموده و ضمن یادگیری اصول دستیاری دندانپزشکی شانس اشتغال در این رسته را نیز داشته باشند.</p>
+        <p>برای درخواست همکاری با کلینیک میتوانید از طریق فرم زیر با ما مکاتبه کنید. برای ثبت درخواست خود لطفا گزینه "درخواست همکاری با ما" را انتخاب کنید.</p>          
+      </div>
+
+      <form class="main-form">               
+        <div class="row mt-5 ">                
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select style="direction: rtl; text-align: right;" name="departement" id="departement" class="custom-select">
+            <option value="ویزیت و مشاوره">ویزیت و مشاوره</option>
+            <option value="اطفال">اطفال</option>
+            <option value="درد دندان">درد دندان</option>
+            <option value="جرمگیری">جرمگیری</option>
+            <option value="زیبایی">زیبایی</option>
+            <option value="ارتودنسی">ارتودنسی</option>
+            <option value="درخواست همکاری با ما">درخواست همکاری با ما</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
+            <input type="text" class="form-control" style="direction: rtl; text-align: right;" placeholder="نام و نام خانوادگی..." id="inputUsername">
+          </div>  
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <input type="text" class="form-control" style="direction: rtl; text-align: right;" placeholder="شماره تماس..." id="userNumber">
+          </div>
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <textarea name="message" id="message" class="form-control" rows="6" style="direction: rtl; text-align: right;" placeholder="توضیحات..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 wow zoomIn" onclick=submitRequest()>ثبت درخواست</button>
+      </form>
+    </div>
+
+  </div> <!-- .page-section -->
+
+  <footer class="page-footer" id="site-footer">
+  </footer>
+
+  <script src="{% static 'yasha/js/jquery-3.5.1.min.js' %}"></script>   
+  <script src="{% static 'yasha/js/bootstrap.bundle.min.js' %}"></script> 
+  <script src="{% static 'yasha/vendor/owl-carousel/js/owl.carousel.min.js' %}"></script> 
+  <script src="{% static 'yasha/vendor/wow/wow.min.js' %}"></script> 
+  <script src="{% static 'yasha/js/theme.js' %}"></script> 
+  <script src="{% static 'yasha/js/appointment.js' %}"></script> 
+  <script type="module" src="{% static 'yasha/js/switchpage.js' %}"></script> 
+  <script type="module" src="{% static 'yasha/js/showdata.js' %}"></script> 
+  
+</body>
+</html>
