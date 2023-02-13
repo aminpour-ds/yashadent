@@ -64,7 +64,7 @@ class Insurance(models.Model):
     description_fa = models.TextField(("توضیحات"))
     name_en = models.CharField(max_length=150)
     description_en = models.TextField()
-    image = models.ImageField(upload_to='yasha/images/Insurance', validators=[validate_file_size])      
+    image = models.ImageField(("لوگو"), upload_to='yasha/images/Insurance', validators=[validate_file_size])      
     
     def __str__(self):
         return self.name_fa

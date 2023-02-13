@@ -41,7 +41,19 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 @admin.register(models.Insurance)
 class InsuranceAdmin(admin.ModelAdmin):
-    list_display = ['name_fa', 'description_fa', 'name_en', 'description_en', 'image']
+    list_display = ['name_fa', 'description_fa', 'logo']
+    
+    def logo(self, instance):
+        if instance.image.name != '':
+            return format_html(f'<img src="{instance.image.url}" class="thumbnail-admin" />')
+        return ''
+
+    logo.short_description = 'لوگو'
+    logo.allow_tags = True
+    class Media:
+        css = {
+            'all': ['adminstyle/style.css']
+    }
 
 
 class ServiceTypeImageInline(admin.TabularInline):
