@@ -179,13 +179,13 @@ function clinic_info(outcome){
             document.getElementById('image-appointment').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
         } else if(outcome.results[0].images[index].name == "درباره ما" && document.getElementById('image-about') != null){
             document.getElementById('image-about').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
-        } else if(outcome.results[0].images[index].name == "نمونه کار" && document.getElementById('image-sample') != null){
+        } else if(outcome.results[0].images[index].name == "نمونه کارها" && document.getElementById('image-sample') != null){
             document.getElementById('image-sample').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
         } else if(outcome.results[0].images[index].name == "پزشکان" && document.getElementById('image-doctor') != null){
             document.getElementById('image-doctor').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
         } else if(outcome.results[0].images[index].name == "خدمات" && document.getElementById('image-service') != null){
             document.getElementById('image-service').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
-        } else if(outcome.results[0].images[index].name == "خدمات" && document.getElementById('image-partners') != null){
+        } else if(outcome.results[0].images[index].name == "بیمه ها و شرکا" && document.getElementById('image-partners') != null){
             document.getElementById('image-partners').style.backgroundImage= `url(${outcome.results[0].images[index].image})`;
         }
     }
