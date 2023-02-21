@@ -360,13 +360,8 @@ h1, h2, h3, h4, h5, h6,
   line-height: 1.2;
 }
 
-#site-appointment h1{
-  margin-bottom: 2rem;
-}
-
 h1, .h1 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
 }
 
 h2, .h2 {
@@ -606,35 +601,6 @@ pre code {
   .container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1140px;
   }
-}
-
-@media (min-width: 1200px) {
-  .page-footer .container {
-    max-width: 1300px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .topbar .container, .navbar .container {
-    max-width: 1700px;
-  }
-}
-
-.page-hero .panel-video { 
-  background-size: 1519px 720px; 
-  background-position: 50% 50%;
-  width: 1519px; 
-  height: 720px;
-}
-
-.panel-video video {
-  width: 1519px; 
-  height: 720px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  object-fit: cover;
 }
 
 .row {
@@ -10309,25 +10275,4 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-
-.footer-link-info h5 {
-  color: #ffffff;
-  font-size: 1.25rem;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  position: relative;
-  font-weight: 500;
-  padding: 0 0 10px 0;
-}
-.footer-link-info h5::before {
-  border-bottom: 3px solid #00D9A5;
-  content: "";
-  height: 3px;
-  width: 100%;
-  position: absolute;
-  bottom: 3px;
-  left: 0px;
-  
-}
-
 /*# sourceMappingURL=bootstrap.css.map */
