@@ -49,10 +49,11 @@
        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore eaque porro consequatur ex aspernatur. Explicabo, excepturi accusantium! Placeat voluptates esse ut optio facilis!</p> 
        <p>At vero eos et accusam et justo duo dolores et ea rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore eaque porro consequatur ex aspernatur. Explicabo, excepturi accusantium! Placeat voluptates esse ut optio facilis!</p> 
       </div>
-      <form class="main-form">               
+      <form class="main-form">
+        {% csrf_token %}
         <div class="row mt-5 ">
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" class="form-control" placeholder="Full name" id="inputUsername">
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <input type="text" class="form-control" placeholder="Full name..." id="inputUsername">
           </div>        
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
             <select name="departement" id="departement" class="custom-select">
@@ -61,12 +62,14 @@
               <option value="Toothache">Toothache</option>
               <option value="Removing Dental Plaque">Removing Dental Plaque</option>
               <option value="Beauty">Beauty</option>
-              <option value="Orthodontic">Orthodontic</option> 
-              <option value="Join As Doctors">Join As Doctors</option>
+              <option value="Orthodontic">Orthodontic</option>              
             </select>
           </div>
-          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
             <input type="text" class="form-control" placeholder="Number.." id="userNumber">
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight">
+            <input type="text" class="form-control" placeholder="email..." id="userEmail">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
             <textarea name="message" id="message" class="form-control" rows="6" placeholder="Enter message.."></textarea>

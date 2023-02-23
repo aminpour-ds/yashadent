@@ -4,6 +4,7 @@ function submitRequest() {
         input_username : document.querySelector("#inputUsername"),
         input_departement : document.querySelector("#departement"),        
         input_UserNumber : document.querySelector("#userNumber"),         
+        input_UserEmail : document.querySelector("#userEmail"),         
         input_message : document.querySelector("#message")            
     };                          
     addEventListener("click", async (e) => {                
@@ -19,6 +20,7 @@ function submitRequest() {
             name: userinfo.input_username.value,
             your_problem: userinfo.input_departement.value,
             phone: userinfo.input_UserNumber.value,
+            email: userinfo.input_UserEmail.value || '-',
             description: userinfo.input_message.value || '-'
             }),                
         })
@@ -31,20 +33,21 @@ function submitRequest() {
         })
         .then(data => {
             if(document.documentElement.attributes.lang.value === "fa"){
-                alert('درخواست شما ثبت شده است، به زودی برای تعیین وقت ملاقات با شما تماس گرفته خواهد شد. متشکرم!');
-                window.location.assign("/");
+                alert('درخواست شما ثبت شده است، به زودی برای تعیین وقت ملاقات با شما تماس گرفته خواهد شد. متشکرم!'); 
+                window.location.assign("/appointment");
             } else{
-                alert('Your request has been registered, you will be contacted soon to set up an appointment time. thank you!');
-                window.location.assign("/en");  
+                alert('Your request has been registered, you will be contacted soon to set up an appointment time. thank you!'); 
+                window.location.assign("/en/appointment");  
             }
         })
         .catch((err) => {                    
             if(document.documentElement.attributes.lang.value === "fa"){
-                alert('اطلاعات وارد شده صحیح نیست، دوباره امتحان کنید!');                
+                alert('اطلاعات وارد شده صحیح نیست، دوباره امتحان کنید!');    
+                window.location.assign("/appointment");             
             } else {
                 alert('The entered information is not correct, try again!');
-            }
-            window.location.assign(document.location.href);            
+                window.location.assign("/en/appointment"); 
+            }          
         });
     });            
 }
