@@ -123,7 +123,7 @@ class AboutAdmin(admin.ModelAdmin):
 
 @admin.register(models.AppointmentRequest)
 class AppointmentRequestAdmin(admin.ModelAdmin):
-    list_display = ['name', 'your_problem', 'phone', 'description', 'date']
+    list_display = ['name', 'your_problem', 'phone', 'email','description', 'date']
     ordering = ['-date']
 
 
