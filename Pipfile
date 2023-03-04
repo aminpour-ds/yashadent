@@ -12,6 +12,8 @@ djoser = "*"
 djangorestframework-simplejwt = "*"
 pillow = "*"
 mysqlclient = "*"
+django-cors-headers = "*"
+whitenoise = "*"
 
 [dev-packages]
 

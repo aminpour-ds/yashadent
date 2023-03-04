@@ -152,4 +152,5 @@ cython_debug/
 #.idea/
 
 /media/
+/assets/
 general.log

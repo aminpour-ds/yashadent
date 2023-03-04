@@ -8,14 +8,16 @@ function serviceCard(item){
     if(document.documentElement.attributes.lang.value === "fa"){
         var name = item.name_fa;
         style = "direction: rtl; text-align: center;";
+        href = '/service/';
     } else {
         var name = item.name_en;
         style = "text-align: center;";
+        href = '/en/service/';
     }    
     
     return '<div class="col-lg-4 py-2 wow zoomIn"><div class="card-blog" style ="' + style + '"><div class="header">' +
-           '<a href="/service/' + id + '" class="post-thumb"><img src="' + img + '" alt=""></a></div><div class="body">' +
-           '<h5 class="post-title"><a href="/service/' + id + '">' + name + '</a></h5></div></div></div>';
+           '<a href="' + href + id + '" class="post-thumb"><img src="' + img + '" alt=""></a></div><div class="body">' +
+           '<h5 class="post-title"><a href="' + href + id + '">' + name + '</a></h5></div></div></div>';
 }
 
 function service_list(outcome){

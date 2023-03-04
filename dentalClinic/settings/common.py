@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -33,12 +34,14 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework',
     'django_filters',
+    'corsheaders',
     'djoser',
     'core',
     'yasha',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -53,6 +56,8 @@ MIDDLEWARE = [
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:8001', 'http://127.0.0.1:8001', 'http://192.168.1.20:8001']
 
 ROOT_URLCONF = 'dentalClinic.urls'
 
@@ -140,4 +145,32 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+}
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler', # with this class we can write log messages to the console
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'general.log',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': os.environ.get('DJANGO_LOG_LEVEL', 'INFO')
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '{asctime} ({levelname}) - {name} {process:d} {thread:d} {message}',  # time-bug level-name of module that error happen-... - thread of the error -log of message
+            'style': '{',  # this means str.format()
+        }
+    }
 }
